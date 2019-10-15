@@ -1,1 +1,3 @@
-import_playbook: lamp_playbook.yaml
+---
+
+- import_playbook: lamp_playbook.yaml

@@ -1,5 +1,5 @@
 ---
-- hosts: web_servers
+- hosts: lamp_servers
   become: yes
   roles:
     - web

@@ -1,0 +1,12 @@
+---
+- name: Install PHP 7.2 and Necessary Apache Modules
+  apt:
+    name: '{{ packages }}'
+    state: present
+  vars:
+    packages:
+    - php7.2
+    - php7.2-mysql
+    - php7.2-gd
+    - php7.2-mbstring
+    - libapache2-mod-php7.2 
