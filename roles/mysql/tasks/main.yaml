@@ -1,0 +1,3 @@
+---
+- import_tasks: install_mysql_server.yaml
+- import_tasks: configure_mysql_server.yaml

@@ -1,0 +1,6 @@
+---
+- name: restart mysql server
+  systemd:
+    daemon_reload: true
+    name: mysql
+    state: restarted
