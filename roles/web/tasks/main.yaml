@@ -4,3 +4,6 @@
 
 # Import the Install for PHP 7.2 modules
 - import_tasks: install_php7.2.yaml
+
+# Create templates for Apache2 vhosts
+- import_tasks: create_basic_vhost.yaml 

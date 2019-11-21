@@ -1,3 +1,14 @@
 ---
+- hosts: lamp_servers
+  become: yes
+  tasks:
+    - include_role: 
+        name: web
+      vars:
+        vhost:
+          - hostname: test.usgo.org
+            serveradmin: webmaster@usgo.org
+            documentroot: /var/www/usgo.org
+    - include_role: 
+            name: mysql
 
-- import_playbook: lamp_playbook.yaml

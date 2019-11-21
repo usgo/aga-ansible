@@ -1,0 +1,19 @@
+---
+- name: Make the extra configuration directory
+  file:
+    path: "/etc/apache2/usgo_extra_confs"
+    state: directory
+    owner: root
+    group: root
+
+- name: Copy extra configuration files for vhosts
+  template:
+    src: "{{ item.hostname }}.extra.conf.j2"
+    dest: "/etc/apache2/usgo_extra_confs/{{ item.hostname }}.extra.conf"
+  with_items: "{{ vhost }}"
+
+- name: Import a basic apache2 virtual host template
+  template:
+    src: vhost.conf.j2
+    dest: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
+  with_items: "{{ vhost }}"

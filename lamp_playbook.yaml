@@ -1,6 +1,0 @@
----
-- hosts: lamp_servers
-  become: yes
-  roles:
-    - web
-    - mysql
