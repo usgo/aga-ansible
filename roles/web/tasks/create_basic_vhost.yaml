@@ -17,3 +17,9 @@
     src: vhost.conf.j2
     dest: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
   with_items: "{{ vhost }}"
+
+- name: Import a basic apache2 ssl virtual host template
+  template:
+    src: vhost_ssl.conf.j2
+    dest: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
+  with_items: "{{ vhost_ssl }}"

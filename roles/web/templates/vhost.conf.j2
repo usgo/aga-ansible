@@ -4,7 +4,9 @@
     
     ServerAdmin "{{ item.serveradmin }}"
     
+    {% if item.include_extras_config %} 
     Include "/etc/apache2/usgo_extra_conf/{{ item.hostname }}.extras.conf"
+    {% endif %}
 
     {% if item.extra_params is defined %}
       {{ item.extra_params }}
