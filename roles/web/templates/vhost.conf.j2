@@ -5,4 +5,8 @@
     ServerAdmin "{{ item.serveradmin }}"
     
     Include "/etc/apache2/usgo_extra_conf/{{ item.hostname }}.extras.conf"
+
+    {% if item.extra_params is defined %}
+      {{ item.extra_params }}
+    {% endif %}
 </VirtualHost>
