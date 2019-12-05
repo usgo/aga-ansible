@@ -1,0 +1,57 @@
+# Define the agagd directories
+Define agagd_www_home /var/www/agagd.usgo.org
+Define agagd_python_virtenv_dir ${agagd_www_home}/agagd_python_virtenv/lib/python2.7/site-packages
+Define agagd_repo ${agagd_www_home}/current	
+
+ServerAdmin webmaster@usgo.org
+ServerName test.agagd.usgo.org
+#ServerAlias test.agagd.usgo.org
+
+DocumentRoot ${agagd_repo}/agagd/agagd
+DirectoryIndex index.php index.html index.shtml
+    
+# Error Logging
+ErrorLog /var/log/apache2/{{ item.hostname }}.org-error.log 
+CustomLog /var/log/apache2/{{ item.hostname }}-access.log combined
+
+# WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py	
+WSGIDaemonProcess test.agagd.usgo.org python-path=${agagd_repo}/agagd:${agagd_python_virtenv_dir} display-name=agagd-Django-app graceful-timeout=30 restart-interval=3600
+WSGIPythonPath /var/www/agagd.usgo.org/agagd_releases/agagd_may_2019/agagd:/var/www/agagd.usgo.org/agagd_python_virtenv/lib/python2.7/site-packages
+WSGIProcessGroup test.agagd.usgo.org
+WSGIApplicationGroup %{GLOBAL}
+
+SetEnv DJANGO_SETTINGS_MODULE "agagd.settings.prod"
+SetEnv APP_DB_NAME "{{ agagd_db_name }}"
+SetEnv AGAGD_USER "{{ agagd_db_user }}"
+SetEnv TEMPLATE_DIR "${agagd_repo}/agagd/templates"
+SetEnv MYSQL_PASS "{{ agagd_db_user_password }}"
+SetEnv SECRET_KEY "{{ agagd_secret_key }}"
+
+Alias /robots.txt ${agagd_repo}/agagd/static/robots.txt
+#Alias /favicon.ico /var/www/agagd.usgo.org/test/repo/agagd/static/favicon.ico
+
+AliasMatch ^/([^/]*\.css) ${agagd_repo}/agagd/static/$1
+
+#Alias /media/ /var/www/agagd.usgo.org/test/repo/agagd/media/
+Alias /static/ ${agagd_repo}/agagd/static/
+
+#<Directory ${agagd_www_home}>
+#    Options +FollowSymLinks
+#    Require all granted
+#</Directory>
+
+<Directory ${agagd_repo}/agagd/static>
+    Require all granted
+</Directory>
+
+<Directory ${agagd_repo}/agagd/media>
+    Require all granted
+</Directory>
+
+WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py
+
+<Directory ${agagd_repo}/agagd/agagd>
+    <Files wsgi.py>
+        Require all granted
+    </Files>
+</Directory>

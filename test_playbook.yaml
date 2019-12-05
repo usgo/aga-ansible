@@ -1,5 +1,5 @@
 ---
-- hosts: lamp_servers
+- hosts: test_lamp_servers
   become: yes
   tasks:
     - include_role: 
@@ -9,6 +9,9 @@
           - hostname: test.usgo.org
             serveradmin: webmaster@usgo.org
             documentroot: /var/www/usgo.org
+          - hostname: test.agagd.usgo.org
+            serveradmin: webmaster@usgo.org
+            documentroot: /var/www/agagd.usgo.org
     - include_role: 
             name: mysql
 
