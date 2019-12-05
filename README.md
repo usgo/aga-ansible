@@ -18,3 +18,6 @@ associated with certbot and lets encrypt that enable HTTPs on our servers.
 
 ## Basic Usage
 * `shell> ansible-playbook -u [username] -K -i [inventory] [playbook.yml]`
+
+## Ansible Vault Usage
+* `shell> ansible-playbook --ask-vault-pass -u [username] -K -i [inventory] [playbook.yaml]`
