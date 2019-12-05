@@ -22,11 +22,31 @@
     - restart apache
   with_items: "{{ vhost }}"
 
+- name: Add vhost symlink in sites-enabled.
+  file:
+    src: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
+    dest: "/etc/apache2/sites-enabled/{{ item.hostname }}.conf"
+    state: link
+  notify: 
+    - restart apache
+  with_items: "{{ vhost }}"
+  when: vhost is defined
+
 - name: Import a basic apache2 ssl virtual host template
   template:
     src: vhost_ssl.conf.j2
     dest: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
   notify:
+    - restart apache
+  with_items: "{{ vhost_ssl }}"
+  when: vhost_ssl is defined
+
+- name: Add vhost_ssl symlink in sites-enabled.
+  file:
+    src: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
+    dest: "/etc/apache2/sites-enabled/{{ item.hostname }}.conf"
+    state: link
+  notify: 
     - restart apache
   with_items: "{{ vhost_ssl }}"
   when: vhost_ssl is defined
