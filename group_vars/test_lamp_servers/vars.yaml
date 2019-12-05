@@ -8,12 +8,14 @@ vhost:
   - hostname: test.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/usgo.org
+    include_extra_config: false
     extra_params: |
           RewriteCond %{SERVER_NAME} =test.example.com
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
   - hostname: test.agagd.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
+    include_extra_config: false
     extra_params: |
           RewriteCond %{SERVER_NAME} =test.example.com
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
@@ -21,7 +23,10 @@ vhost_ssl:
   - hostname: test.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/usgo.org
+    include_extra_config: true
   - hostname: test.agagd.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
-
+    include_extra_config: true
+    outside_extra_params: |
+          WSGIPythonPath /var/www/agagd.usgo.org/agagd_releases/agagd_may_2019/agagd:/var/www/agagd.usgo.org/agagd_python_virtenv/lib/python2.7/site-packages

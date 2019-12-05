@@ -1,12 +1,18 @@
 <VirtualHost {{ item.hostname }}:80>
-    DocumentRoot "/www/{{ item.hostname }}"
     ServerName "{{ item.hostname }}"
     
     ServerAdmin "{{ item.serveradmin }}"
-    
-    Include "/etc/apache2/usgo_extra_conf/{{ item.hostname }}.extras.conf"
+
+    {% if item.include_extra_config %} 
+    Include "/etc/apache2/usgo_extra_confs/{{ item.hostname }}.extra.conf"
+    {% endif %}
 
     {% if item.extra_params is defined %}
       {{ item.extra_params }}
     {% endif %}
 </VirtualHost>
+
+    {% if item.outside_extra_params is defined %}
+      {{ item.outside_extra_params }}
+    {% endif %}
+

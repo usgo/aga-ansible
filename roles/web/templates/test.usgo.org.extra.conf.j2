@@ -1,6 +1,9 @@
 # Put the directories into variables for easier use.
 Define usgo_www_root {{ item.documentroot }}
+Define usgo_drupal_root ${usgo_www_root}/usgo_org_current/drupal-app
 Define usgo_www_theme_root ${usgo_www_root}/theme
+
+DocumentRoot ${usgo_drupal_root}
 
 LogLevel info ssl:warn
 
