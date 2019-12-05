@@ -10,17 +10,23 @@
   template:
     src: "{{ item.hostname }}.extra.conf.j2"
     dest: "/etc/apache2/usgo_extra_confs/{{ item.hostname }}.extra.conf"
+  notify:
+    - restart apache
   with_items: "{{ vhost }}"
 
 - name: Import a basic apache2 virtual host template
   template:
     src: vhost.conf.j2
     dest: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
+  notify:
+    - restart apache
   with_items: "{{ vhost }}"
 
 - name: Import a basic apache2 ssl virtual host template
   template:
     src: vhost_ssl.conf.j2
     dest: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
+  notify:
+    - restart apache
   with_items: "{{ vhost_ssl }}"
   when: vhost_ssl is defined
