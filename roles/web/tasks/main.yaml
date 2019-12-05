@@ -2,6 +2,9 @@
 # Import the Install for Apache2 with PHP 7.2 modules
 - import_tasks: install_apache2.yaml
 
+# Install certbot for Apache2
+- import_tasks: install_certbot.yaml
+
 # Import the Install for PHP 7.2 modules
 - import_tasks: install_php7.2.yaml
 

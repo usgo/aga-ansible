@@ -1,4 +1,5 @@
 ---
+certbot_admin_email: webmaster@usgo.org
 agagd_db_user: agagd_db_ro_usr 
 agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
@@ -7,6 +8,20 @@ vhost:
   - hostname: test.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/usgo.org
+    extra_params: |
+          RewriteCond %{SERVER_NAME} =test.example.com
+          RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
   - hostname: test.agagd.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
+    extra_params: |
+          RewriteCond %{SERVER_NAME} =test.example.com
+          RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+vhost_ssl:
+  - hostname: test.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/usgo.org
+  - hostname: test.agagd.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/agagd.usgo.org
+

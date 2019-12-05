@@ -1,0 +1,26 @@
+---
+- name: Add certbot repository
+  apt_repository:
+    repo: 'ppa:certbot/certbot'
+
+- name: Install Certbot's Apache package
+  apt:
+    name: python-certbot-apache
+    state: present
+
+- name: Check if certificate already exists.
+  stat:
+    path: /etc/letsencrypt/live/{{ item.hostname }}/cert.pem
+  register: letsencrypt_cert
+  with_items: "{{ vhosts }}"
+
+- name: Generate new certificate if one doesn't exist.
+  command: "certbot certonly --apache --noninteractive --agree-tos --email {{ certbot_admin_email }} -d {{ item.item.hostname }}"
+  with_items: "{{ letsencrypt_cert.results }}"
+  when: not item.stat.exists
+
+- name: Restart Services if new certificate is created
+  notify:
+    - restart apache
+  when: not item.stat.exists
+  
