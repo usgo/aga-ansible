@@ -4,14 +4,5 @@
   tasks:
     - include_role: 
         name: web
-      vars:
-        vhost:
-          - hostname: test.usgo.org
-            serveradmin: webmaster@usgo.org
-            documentroot: /var/www/usgo.org
-          - hostname: test.agagd.usgo.org
-            serveradmin: webmaster@usgo.org
-            documentroot: /var/www/agagd.usgo.org
     - include_role: 
-            name: mysql
-
+        name: mysql

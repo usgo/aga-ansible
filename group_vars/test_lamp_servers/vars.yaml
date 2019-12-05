@@ -3,3 +3,10 @@ agagd_db_user: agagd_db_ro_usr
 agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
+vhost:
+  - hostname: test.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/usgo.org
+  - hostname: test.agagd.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/agagd.usgo.org
