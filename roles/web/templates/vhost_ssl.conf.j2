@@ -1,8 +1,8 @@
 <IfModule mod_ssl.c>
-    <VirtualHost {{ item.hostname }}:443>
-        ServerName "{{ item.hostname }}"
+    <VirtualHost _default_:443>
+        ServerName {{ item.hostname }}
 
-        ServerAdmin "{{ item.serveradmin }}"
+        ServerAdmin {{ item.serveradmin }}
         
         {% if item.include_extra_config %}
         Include "/etc/apache2/usgo_extra_confs/{{ item.hostname }}.extra.conf"
