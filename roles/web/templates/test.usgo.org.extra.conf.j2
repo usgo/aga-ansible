@@ -94,11 +94,11 @@ Alias /news ${usgo_www_root}/news
 Redirect /files /sites/default/files
 
 # Basic Document Access Configuration for dev.usgo.org
-<Directory ${usgo_www_root}/drupal> 
+<Directory ${usgo_drupal_root}> 
      Require all granted
      Options -Indexes +MultiViews +FollowSymLinks
      AllowOverride All
 </Directory>
 
-Alias /favicon.ico ${usgo_www_root}/drupal/favicon.ico
+Alias /favicon.ico ${usgo_drupal_root}/favicon.ico
 
