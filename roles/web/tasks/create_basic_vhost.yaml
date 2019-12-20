@@ -8,8 +8,8 @@
 
 - name: Copy extra configuration files for vhosts
   template:
-    src: "{{ item.hostname }}.extra.conf.j2"
-    dest: "/etc/apache2/usgo_extra_confs/{{ item.hostname }}.extra.conf"
+    src: "{{ item.servername }}.extra.conf.j2"
+    dest: "/etc/apache2/usgo_extra_confs/{{ item.servername }}.extra.conf"
   notify:
     - restart apache
   with_items: "{{ vhost }}"
@@ -17,15 +17,15 @@
 - name: Import a basic apache2 virtual host template
   template:
     src: vhost.conf.j2
-    dest: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
+    dest: "/etc/apache2/sites-available/{{ item.servername }}.conf"
   notify:
     - restart apache
   with_items: "{{ vhost }}"
 
 - name: Add vhost symlink in sites-enabled.
   file:
-    src: "/etc/apache2/sites-available/{{ item.hostname }}.conf"
-    dest: "/etc/apache2/sites-enabled/{{ item.hostname }}.conf"
+    src: "/etc/apache2/sites-available/{{ item.servername }}.conf"
+    dest: "/etc/apache2/sites-enabled/{{ item.servername }}.conf"
     state: link
   notify: 
     - restart apache
@@ -34,12 +34,12 @@
 
 - name: Check if certificate already exists.
   stat:
-    path: /etc/letsencrypt/live/{{ item.hostname }}/cert.pem
+    path: /etc/letsencrypt/live/{{ item.servername }}/cert.pem
   register: letsencrypt_cert
   with_items: "{{ vhost_ssl }}"
 
 - name: Generate new certificate if one doesn't exist.
-  command: "certbot certonly --apache --noninteractive --agree-tos --email {{ certbot_admin_email }} -d {{ item.item.hostname }}"
+  command: "certbot certonly --apache --noninteractive --agree-tos --email {{ certbot_admin_email }} -d {{ item.item.servername }}"
   with_items: "{{ letsencrypt_cert.results }}"
   notify: restart apache
   when: not item.stat.exists
@@ -47,7 +47,7 @@
 - name: Import a basic apache2 ssl virtual host template
   template:
     src: vhost_ssl.conf.j2
-    dest: "/etc/apache2/sites-available/{{ item.hostname }}-ssl.conf"
+    dest: "/etc/apache2/sites-available/{{ item.servername }}-ssl.conf"
   notify:
     - restart apache
   with_items: "{{ vhost_ssl }}"
@@ -55,8 +55,8 @@
 
 - name: Add vhost_ssl symlink in sites-enabled.
   file:
-    src: "/etc/apache2/sites-available/{{ item.hostname }}-ssl.conf"
-    dest: "/etc/apache2/sites-enabled/{{ item.hostname }}-ssl.conf"
+    src: "/etc/apache2/sites-available/{{ item.servername }}-ssl.conf"
+    dest: "/etc/apache2/sites-enabled/{{ item.servername }}-ssl.conf"
     state: link
   notify: 
     - restart apache

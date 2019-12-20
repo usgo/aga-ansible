@@ -1,11 +1,19 @@
 <IfModule mod_ssl.c>
     <VirtualHost _default_:443>
-        ServerName {{ item.hostname }}
+        {% if item.servername is defined %}
+        ServerName {{ item.servername }}
+        {% endif %}
 
+        {% if item.serveralias is defined %}
+        ServerAlias {{ item.serveralias }}
+        {% endif %}
+
+        {% if item.serveradmin is defined %}
         ServerAdmin {{ item.serveradmin }}
+        {% endif %}
         
         {% if item.include_extra_config %}
-        Include "/etc/apache2/usgo_extra_confs/{{ item.hostname }}.extra.conf"
+        Include "/etc/apache2/usgo_extra_confs/{{ item.servername }}.extra.conf"
         {% endif %}
 
         {% if item.extra_params is defined %}
@@ -13,8 +21,8 @@
         {% endif %}
 
         Include /etc/letsencrypt/options-ssl-apache.conf
-        SSLCertificateFile /etc/letsencrypt/live/{{ item.hostname }}/fullchain.pem
-        SSLCertificateKeyFile /etc/letsencrypt/live/{{ item.hostname }}/privkey.pem
+        SSLCertificateFile /etc/letsencrypt/live/{{ item.servername }}/fullchain.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/{{ item.servername }}/privkey.pem
     </VirtualHost>
         
         {% if item.outside_extra_params is defined %}

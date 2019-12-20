@@ -10,7 +10,7 @@ that match production.
 
 Apache Virtual Hosts have two main templates: [vhost.conf.j2][1] and [vhost_ssl.conf.j2][2] which
 provide a base for our vhost configuration. Host specific configurations for the web role are provided
-with a `[hostname].extra.conf.j2` that has the same hostname which was defined in group_vars.
+with a `[servername].extra.conf.j2` that has the same hostname which was defined in group_vars.
 
 [1]: roles/web/templates/vhost.conf.j2
 [2]: roles/web/templates/vhost_ssl.conf.j2
@@ -30,10 +30,10 @@ associated with certbot and lets encrypt that enable HTTPs on our servers.
 ```
 ---
 vhost:
-  - hostname: test.example.com
+  - servername: test.example.com
     serveradmin: webmaster@test.example.com
     documentroot: /var/www/test.example.com
-  - hostname: example.com
+  - servername: example.com
     serveradmin: webmaster@example.com
     documentroot: /var/www/example.com
 ```
@@ -45,8 +45,8 @@ Define example_com_root {{ item.documentroot }}
 
 LogLevel info ssl:warn
 
-ErrorLog ${APACHE_LOG_DIR}/{{ item.hostname }}-error.log
-CustomLog ${APACHE_LOG_DIR}/{{ item.hostname }}-access.log combined
+ErrorLog ${APACHE_LOG_DIR}/{{ item.servername }}-error.log
+CustomLog ${APACHE_LOG_DIR}/{{ item.servername }}-access.log combined
 
 <Directory ${example_com_root}>
       Options +FollowSymLinks -Indexes -MultiViews
@@ -59,7 +59,7 @@ CustomLog ${APACHE_LOG_DIR}/{{ item.hostname }}-access.log combined
 
 ```
 vhost:
-  - hostname: test.example.com
+  - servername: test.example.com
     serveradmin: webmaster@test.example.com
     documentroot: /var/www/test.example.com
     extra_params: |

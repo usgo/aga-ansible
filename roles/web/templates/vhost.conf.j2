@@ -1,10 +1,16 @@
 <VirtualHost _default_:80>
-    ServerName {{ item.hostname }}
-    
+    {% if item.servername is defined %}
+    ServerName {{ item.servername }}
+    {% endif %}    
+
+    {% if item.serveralias is defined %}
+    ServerAlias {{ item.serveralias }}
+    {% endif %}
+ 
     ServerAdmin {{ item.serveradmin }}
 
     {% if item.include_extra_config %} 
-    Include "/etc/apache2/usgo_extra_confs/{{ item.hostname }}.extra.conf"
+    Include "/etc/apache2/usgo_extra_confs/{{ item.servername }}.extra.conf"
     {% endif %}
 
     {% if item.extra_params is defined %}

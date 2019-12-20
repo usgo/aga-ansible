@@ -5,7 +5,7 @@ agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
 vhost:
-  - hostname: test.usgo.org
+  - servername: test.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/usgo.org
     include_extra_config: false
@@ -13,7 +13,7 @@ vhost:
           RewriteEngine on
           RewriteCond %{SERVER_NAME} =test.usgo.org
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
-  - hostname: test.agagd.usgo.org
+  - servername: test.agagd.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
     include_extra_config: false
@@ -22,11 +22,11 @@ vhost:
           RewriteCond %{SERVER_NAME} =test.agagd.usgo.org
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 vhost_ssl:
-  - hostname: test.usgo.org
+  - servername: test.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/usgo.org
     include_extra_config: true
-  - hostname: test.agagd.usgo.org
+  - servername: test.agagd.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
     include_extra_config: true
