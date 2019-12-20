@@ -1,2 +1,3 @@
 test_inventory
-.vault_pass
+.test_vault_pass
+.prod_vault_pass

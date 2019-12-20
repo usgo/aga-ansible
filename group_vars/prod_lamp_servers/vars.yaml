@@ -1,0 +1,40 @@
+---
+certbot_admin_email: webmaster@usgo.org
+agagd_db_user: agagd_db_ro_usr 
+agagd_db_name: "{{ vault_agagd_db_name }}"
+agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
+agagd_secret_key: "{{ vault_agagd_secret_key }}"
+vhost:
+  - servername: usgo.org
+    serveralias: www.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/usgo.org
+    include_extra_config: false
+    extra_params: |
+          RewriteEngine on
+          RewriteCond %{SERVER_NAME} =usgo.org
+          RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
+  - servername: agagd.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/agagd.usgo.org
+    include_extra_config: false
+    extra_params: |
+          RewriteEngine on
+          RewriteCond %{SERVER_NAME} =agagd.usgo.org
+          RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+vhost_ssl:
+  - servername: usgo.org
+    serveralias: www.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/usgo.org
+    include_extra_config: true
+    extra_params: |
+          RewriteEngine on
+          RewriteCond %{SERVER_NAME} =usgo.org
+          RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
+  - servername: agagd.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/agagd.usgo.org
+    include_extra_config: true
+    outside_extra_params: |
+          WSGIPythonPath /var/www/agagd.usgo.org/agagd_releases/agagd_may_2019/agagd:/var/www/agagd.usgo.org/agagd_python_virtenv/lib/python2.7/site-packages
