@@ -5,5 +5,7 @@
 
 - name: Install Certbot's Apache package
   apt:
-    name: python-certbot-apache
+    name:
+      - python-certbot-apache
+      - python-acme
     state: present 
