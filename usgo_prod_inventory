@@ -1,2 +1,5 @@
 [prod_lamp_servers]
 23.239.21.46
+
+[prod_app_servers]
+45.33.105.128

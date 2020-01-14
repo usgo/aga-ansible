@@ -1,0 +1,8 @@
+---
+- hosts: prod_app_servers
+  become: yes
+  tasks:
+    - include_role: 
+        name: web
+    - include_role: 
+        name: mysql

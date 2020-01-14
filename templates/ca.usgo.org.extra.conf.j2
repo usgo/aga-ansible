@@ -1,0 +1,14 @@
+Define ca_document_root /var/www/archives.usgo.org/providence
+
+DocumentRoot ${ca_document_root}
+
+LogLevel info ssl:warn
+
+ErrorLog ${APACHE_LOG_DIR}/{{ item.servername }}-error.log
+CustomLog ${APACHE_LOG_DIR}/{{ item.servername }}-access.log combined
+
+<Directory ${ca_document_root}>
+		Options +FollowSymLinks
+		Require all granted
+		AllowOverride all
+</Directory>
