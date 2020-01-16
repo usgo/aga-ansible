@@ -6,13 +6,14 @@ agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
 vhost:
   - servername: test.usgo.org
+    serveralias: www.test.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/usgo.org
     include_extra_config: false
     extra_params: |
           RewriteEngine on
           RewriteCond %{SERVER_NAME} =test.usgo.org
-          RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
+          RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
   - servername: test.agagd.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
@@ -23,10 +24,17 @@ vhost:
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 vhost_ssl:
   - servername: test.usgo.org
+    serveralias: www.test.usgo.org
+    ssl_domains: [ test.usgo.org, www.test.usgo.org ]
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/usgo.org
     include_extra_config: true
+    extra_params: |
+          RewriteEngine on
+          RewriteCond %{SERVER_NAME} =test.usgo.org
+          RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
   - servername: test.agagd.usgo.org
+    ssl_domains: [ test.agagd.usgo.org ]
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
     include_extra_config: true
