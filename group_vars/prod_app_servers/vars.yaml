@@ -11,6 +11,7 @@ vhost:
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
 vhost_ssl:
   - servername: ca.usgo.org
+    ssl_domains: [ ca.usgo.org ]
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/archives.usgo.org/providence
     include_extra_config: true
