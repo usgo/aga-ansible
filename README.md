@@ -70,6 +70,12 @@ vhost:
 ## Basic Usage
 * `shell> ansible-playbook -u [username] -K -i [inventory] [playbook.yml]`
 
+## Ansible Usage with Limits
+* `shell> ansible-playbook -u [username] -K -i [inventory] [playbook.yaml] --limit='[host1,host2]'`
+
 ## Ansible Vault Usage
 * `shell> ansible-playbook --ask-vault-pass -u [username] -K -i [inventory] [playbook.yaml]`
 * `shell> ansible-playbook --vault-password-file=[vault_password_file] -K -i [inventory] [playbook.yaml]`
+
+## Notes:
+* Production lamp is not yet configured with ansible, so --limit must be set to only prod_app_servers.
