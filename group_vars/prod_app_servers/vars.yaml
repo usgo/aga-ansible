@@ -9,9 +9,22 @@ vhost:
           RewriteEngine on
           RewriteCond %{SERVER_NAME} =ca.usgo.org
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
+  - servername: wtg.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/wtg.usgo.org/public
+    include_extra_config: false
+    extra_params: |
+          RewriteEngine on
+          RewriteCond %{SERVER_NAME} =wtg.usgo.org
+          RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 vhost_ssl:
   - servername: ca.usgo.org
     ssl_domains: [ ca.usgo.org ]
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/archives.usgo.org/providence
+    include_extra_config: true
+  - servername: wtg.usgo.org
+    ssl_domains: [ wtg.usgo.org ]
+    serveradmin: webmaster@usgo.org
+    documentroot: /var/www/wtg.usgo.org/public
     include_extra_config: true
