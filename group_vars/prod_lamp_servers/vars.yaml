@@ -26,6 +26,7 @@ vhost_ssl:
   - servername: usgo.org
     serveralias: www.usgo.org
     serveradmin: webmaster@usgo.org
+    ssl_domains: [ usgo.org, www.usgo.org ]
     documentroot: /var/www/usgo.org
     include_extra_config: true
     extra_params: |
@@ -34,6 +35,7 @@ vhost_ssl:
           RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
   - servername: agagd.usgo.org
     serveradmin: webmaster@usgo.org
+    ssl_domains: [ agagd.usgo.org ]
     documentroot: /var/www/agagd.usgo.org
     include_extra_config: true
     outside_extra_params: |
