@@ -14,6 +14,8 @@ vhost:
           RewriteEngine on
           RewriteCond %{SERVER_NAME} =usgo.org
           RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] 
+          RewriteCond %{SERVER_NAME} =www.usgo.org
+          RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
   - servername: agagd.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
