@@ -1,0 +1,12 @@
+---
+- hosts: prod_lamp_servers
+  become: yes
+  tasks:
+    - name: "Updating cache the test lamp servers if not updated in last hour"
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+    - include_role: 
+        name: web
+    - include_role: 
+        name: mysql

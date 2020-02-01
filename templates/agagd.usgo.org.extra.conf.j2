@@ -11,10 +11,10 @@ DirectoryIndex index.php index.html index.shtml
     
 # Error Logging
 ErrorLog /var/log/apache2/{{ item.servername }}.org-error.log 
-CustomLog /var/log/apache2/{{ item.servername }}vaccess.log combined
+CustomLog /var/log/apache2/{{ item.servername }}.org-access.log combined
 
 # WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py	
-WSGIDaemonProcess agagd.usgo.org python-path=${agagd_repo}/agagd:${agagd_python_virtenv_dir} display-name=agagd-Django-app graceful-timeout=30 restart-interval=3600
+#WSGIDaemonProcess agagd.usgo.org python-path=${agagd_repo}/agagd:${agagd_python_virtenv_dir} display-name=agagd-Django-app graceful-timeout=30 restart-interval=3600
 #WSGIPythonPath /var/www/agagd.usgo.org/agagd_releases/agagd_may_2019/agagd:/var/www/agagd.usgo.org/agagd_python_virtenv/lib/python2.7/site-packages
 WSGIProcessGroup agagd.usgo.org
 WSGIApplicationGroup %{GLOBAL}
