@@ -1,0 +1,57 @@
+---
+#These create folders missing when working with the AGA-Archives media library
+ file:
+    path: /var/www/archives.usgo.org/providence/media/AGA_Archives/images
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+ file:
+    path: /var/www/archives.usgo.org/providence/media/AGA_Archives/flv
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+ file:
+    path: /var/www/archives.usgo.org/providence/media/AGA_Archives/mp3
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+ file:
+    path: /var/www/archives.usgo.org/providence/media/AGA_Archives/quicktime
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+ file:
+    path: /var/www/archives.usgo.org/providence/media/AGA_Archives/sqf
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+ file:
+    path: /var/www/archives.usgo.org/providence/media/AGA_Archives/tilepics
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+ file:
+    path: /var/www/archives.usgo.org/providence/media/AGA_Archives/windowsmedia
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+ file:
+    path: /var/www/archives.usgo.org/providence/media/AGA_Archives/workspace
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
