@@ -1,0 +1,19 @@
+---
+- name: Uploading update_wordpress
+  template:
+    src: update_wordpress.sh.j2
+    dest: /usr/local/sbin/update_wordpress.sh
+    owner: root
+    group: root
+    mode: '0744'
+
+
+- name: Create the cronjob for update_wordpress in /etc/cron.d
+  cron:
+    name: update_usgo_wordpress_news
+    weekday: "5"
+    minute: "0"
+    hour: "1"
+    user: root
+    job: "/usr/local/sbin/update_wordpress.sh"
+    cron_file: update_usgo_wordpress_news

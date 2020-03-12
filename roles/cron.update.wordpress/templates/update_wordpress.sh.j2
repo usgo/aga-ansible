@@ -1,0 +1,68 @@
+#!/bin/bash
+# Author: Michael Hiiva
+# 
+# Description: Script to update Wordpress.
+# Usage: update_wordpress.sh /var/www/usgo.org/news 
+
+# Worpress directory for current /news
+wordpress_directory={{ cron_update_wordpress_directory }}
+
+# Wordpress reports logs file, stores current information about changes.
+wordpress_log_reports_filename={{ cron_update_wordpress_log_reports_filename }}
+
+# The Wordpress directory does not exist, so close the application.
+if [[ ! -d "${wordpress_directory}" ]]; then
+    exit 1
+fi
+
+# The Wordpress report log does not exist, so create it.
+if [[ ! -f "${wordpress_log_reports_filename}" ]]; then
+    touch "${wordpress_log_reports_filename}"
+fi
+
+# Get a list of the current plugins
+wp_plugins_list_old=$(/usr/local/bin/wp core version --allow-root --path="${wordpress_directory}")
+
+# Log the update
+log_update_report () {
+    wp_update_version_cmd=$(/usr/local/bin/wp core version --allow-root --path="${wordpress_directory}")
+    wp_plugins_list_cmd=$(/usr/local/bin/wp plugin list --allow-root --path="${wordpress_directory}")
+    current_date=$(date +'%d-%m-%Y')
+    
+    cat << EOF >> "${wordpress_log_reports_filename}"
+    Date:            ${current_date}
+    Current Version: ${wp_update_cmd}
+    Plugins:
+    ${wp_plugins_list_cmd}
+EOF
+
+}
+
+# Update the Wordpress core
+update_core () {
+    /usr/local/bin/wp core update --allow-root --path="${wordpress_directory}"
+}
+
+# Update all the Wordpress plugins
+update_plugins () {
+    /usr/local/bin/wp plugin update --all --allow-root --path="${wordpress_directory}"
+}
+
+# Update all of the Wordpress themes
+update_theme () {
+    /usr/local/bin/wp theme update --all --allow-root --path="${wordpress_directory}"
+}
+
+# Wrapper for updating all of wordpress i.e., plugins, core, etc. 
+update_wordpress () {
+    update_core
+    update_plugins
+    update_theme
+}
+
+run () {
+    update_wordpress
+    log_update_report
+}
+
+run

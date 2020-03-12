@@ -10,3 +10,5 @@
         name: web
     - include_role: 
         name: mysql
+    - include_role:
+        name: cron.update.wordpress
