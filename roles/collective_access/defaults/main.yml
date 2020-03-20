@@ -1,0 +1,3 @@
+---
+ca_www_root: '/var/www/archives.usgo.org'
+ca_media_root: '{{ ca_www_root }}/providence/media/AGA_Archives'

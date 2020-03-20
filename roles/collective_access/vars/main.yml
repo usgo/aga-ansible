@@ -1,0 +1,10 @@
+---
+ca_media_directories:
+  - images
+  - flv
+  - mp3
+  - quicktime
+  - sgf
+  - tilepics
+  - windowsmedia
+  - workspace
