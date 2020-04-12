@@ -18,13 +18,17 @@ vhost:
           RewriteCond %{SERVER_NAME} =wtg.usgo.org
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
   - servername: aghs.cc
+    serveralias: www.aghs.cc
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/aghs.cc
     include_extra_config: false
     extra_params: |
-          RewriteEngine on
-          RewriteCond %{SERVER_NAME} =aghs.cc
-          RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+         RewriteEngine on
+         RewriteCond %{SERVER_NAME} =aghs.cc
+         RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+         RewriteCond %{SERVER_NAME} =www.aghs.cc
+         RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+
 vhost_ssl:
   - servername: ca.usgo.org
     ssl_domains: [ ca.usgo.org ]
@@ -37,7 +41,12 @@ vhost_ssl:
     documentroot: /var/www/wtg.usgo.org/public
     include_extra_config: true
   - servername: aghs.cc
-    ssl_domains: [ aghs.cc ]
+    serveralias: www.aghs.cc
+    ssl_domains: [ aghs.cc, www.aghs.cc ]
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/aghs.cc
     include_extra_config: true
+    extra_params: |
+          RewriteEngine on
+          RewriteCond %{SERVER_NAME} =aghs.cc
+          RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
