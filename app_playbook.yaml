@@ -10,3 +10,5 @@
         name: waytogo
     - include_role:
         name: aghs
+    - include_role:
+        name: collective_access

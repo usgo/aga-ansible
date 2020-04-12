@@ -1,0 +1,11 @@
+---
+- name: Add Additional Media Directories to the AGA-Archives Library
+  file:
+     path: "{{ ca_media_root }}/{{ item }}"
+     state: directory
+     recurse: yes
+     owner: www-data
+     group: www-data
+     mode: '0775'
+  with_items: "{{ ca_media_directories }}"
+
