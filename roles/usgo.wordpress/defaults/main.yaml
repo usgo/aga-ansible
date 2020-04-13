@@ -1,0 +1,40 @@
+---
+# Wordpress Database
+wordpress_database_host: localhost
+wordpress_database_name: ''
+wordpress_database_user: ''
+wordpress_database_pass: ''
+wordpress_table_prefix: 'wp_'
+
+# Wordpress General
+wordpress_charset: 'utf8'
+
+# External Directories
+# USGO's web root directory
+usgos_www_root: '/var/www/usgo.org'
+
+# USGO's Kabocha theme directory
+wordpress_kabocha_theme_dir: "{{ usgos_www_root }}/theme/wordpress"
+
+# Wordpress Directories
+wordpress_root: "{{ usgos_www_root }}/news"
+wordpress_plugins_dir: "{{ wordpress_root }}/wp-content/plugins"
+wordpress_themes_dir: "{{ wordpress_root }}/wp-content/themes"
+wordpress_uploads_dir: '/var/www/usgo-news-uploads'
+
+# Wordpress Plugins and Themes
+wordpress_plugins:
+  - name: add-to-any
+  - name: advanced-excerpt
+  - name: akismet
+  - name: amazon-polly
+  - name: broken-link-checker
+  - name: gallery-plugin
+  - name: glift-go-game
+  - name: maintenance-mode
+  - name: photo-gallery
+  - name: social-networks-auto-poster-facebook-twitter-g
+wordpress_theme_name: 'kabocha'
+
+# Debug mode is off
+wordpress_debug_mode: False

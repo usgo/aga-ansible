@@ -1,0 +1,21 @@
+---
+# Include the variables by distribution.
+- include_vars: "{{ ansible_distribution }}.yaml"
+
+# Add the Configuration Checks Registers
+- include_tasks: config_checks.yaml
+
+# Install the required PHP packages for wordpress
+- include_tasks: install_wordpress.yaml
+
+# Install the required Wordpress plugins
+- include_tasks: install_plugins.yaml
+
+# Add the EJournal Uploads Directory
+- include_tasks: add_wordpress_uploads_dir.yaml
+
+# Create the salts for Wordpress via api
+- include_tasks: create_wp_salt.yaml
+
+# Link the USGO's Kabocha Wordpress theme
+- include_tasks: link_kabocha.yaml

@@ -1,0 +1,15 @@
+---
+- name: Add the EJournal Uploads Directory
+  path: "{{ wordpress_uploads_dir }}"
+  state: directory
+  mode: '0777'
+
+- name: Link the EJournal Uploads Directory to Wordpress
+  file:
+    src: "{{ wordpress_uploads_dir }}"
+    dest: "{{ wordpress_root }}/wp-content/uploads"
+    owner: root
+    group: www-data
+    state: link
+    follow: False
+    force: yes

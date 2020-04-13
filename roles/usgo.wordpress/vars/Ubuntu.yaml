@@ -1,0 +1,6 @@
+---
+wordpress_php_packages:
+  - php
+  - php-xml
+  - php-mysqlnd
+  - unzip

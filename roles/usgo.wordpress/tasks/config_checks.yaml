@@ -1,0 +1,10 @@
+---
+- name: Check if the Kabocha Theme Exists
+  stat:
+    path: "{{ wordpress_kabocha_theme_dir }}"
+  register: kabocha_theme
+
+- name: Check if wp-salts.php exists
+  stat:
+    path: "{{ wordpress_root }}/wp-salts.php"
+  register: wp_salts

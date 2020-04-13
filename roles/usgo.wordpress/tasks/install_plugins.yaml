@@ -1,0 +1,25 @@
+---
+- name: Install Wordpress Plugins from wordpress.org
+  unarchive:
+    src: "https://downloads.wordpress.org/plugin/{{ item.name }}.zip"
+    dest: "{{ wordpress_plugins_dir }}"
+    owner: root
+    group: www-data
+    remote_src: yes
+  with_items: "{{ wordpress_plugins }}"
+
+- name: Create a Directory for eidogo-for-wordpress
+  file:
+    path: "{{ wordpress_plugins_dir }}/eidogo-for-wordpress"
+    owner: root
+    group: www-data
+    state: directory
+
+- name: Download USGO's Eidogo from Github
+  unarchive:
+    src: "https://api.github.com/repos/usgo/eidogo-for-wordpress/tarball/master"
+    dest: "{{ wordpress_plugins_dir }}/eidogo-for-wordpress"
+    owner: root
+    group: www-data
+    remote_src: yes
+    extra_opts: [--strip-components=1]

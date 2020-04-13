@@ -1,0 +1,16 @@
+---
+- name: Create a wp-salts.php for Wordpress
+  get_url:
+    url: 'https://api.wordpress.org/secret-key/1.1/salt/'
+    dest: "{{ wordpress_root }}/wp-salts.php"
+    owner: root
+    group: www-data
+    mode: '0655'
+  when: wp_salts.stat.exists == false
+
+- name: Add PHP Tag to Start of wp-salts.php
+  lineinfile:
+    dest: "{{ wordpress_root }}/wp-salts.php"
+    line: '<?php'
+    state: present
+    insertbefore: BOF
