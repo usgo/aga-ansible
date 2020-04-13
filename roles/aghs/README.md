@@ -6,7 +6,7 @@ Role which deploys and configures aghs.cc.
 * vault password file `.prod_app_vault_pass` must be supplied with the correct 
   prod app vault password if deploying to production
 
-## Example `.ansible.cfg`
+## Example `~/.ansible.cfg`
 ```
 [defaults]
 host_key_checking = False
