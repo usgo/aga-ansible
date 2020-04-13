@@ -1,0 +1,6 @@
+---
+- name: Make the directory for AGHS 
+  file:
+    path: /var/www/aghs.cc
+    state: directory
+    mode: '0755'
