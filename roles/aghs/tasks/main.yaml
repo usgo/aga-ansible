@@ -1,6 +1,52 @@
 ---
-- name: Make the directory for AGHS 
+- name: Create the aghs.cc Main Directory
   file:
     path: /var/www/aghs.cc
     state: directory
+    owner: root
+    group: www-data
     mode: '0755'
+
+- name: Create the aghs.cc Public Website Directory
+  file:
+    path: /var/www/aghs.cc/public
+    state: directory
+    owner: root
+    group: www-data
+    mode: '0755'
+
+- name: Get the Website from Private Repository and Move Into Archive
+  git: 
+    accept_hostkey: yes
+    version: master
+    repo: 'git@github.com:usgo/aghs-cc-website.git'
+    dest: '/tmp/aghs-cc-website-repo'
+    archive: '/tmp/aghs-cc-website.tgz'
+  become: no
+
+- name: Unarchive the aghs.cc Into Public Folder
+  unarchive:
+    src: '/tmp/aghs-cc-website.tgz'
+    dest: '/var/www/aghs.cc/public'
+    owner: root
+    group: www-data
+    mode: '0755'
+    keep_newer: yes
+    remote_src: yes
+
+- name: Set Permissions for the Registration Directory
+  file:
+    path: '/var/www/aghs.cc/registration'
+    state: directory
+    recurse: yes
+    owner: root
+    group: www-data
+
+# Secured with Vault Secret
+- name: Add Link for Restration File Name
+  file:
+    src: "/var/www/aghs.cc/registration/{{ aghs_registration_filename }}"
+    dest: "/var/www/aghs.cc/public/registration/{{ aghs_registration_filename }}"
+    owner: root
+    group: www-data
+    state: link
