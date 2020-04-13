@@ -1,5 +1,6 @@
 ---
 certbot_admin_email: webmaster@usgo.org
+aghs_registration_filename: "{{ vault_aghs_registration_filename }}"
 vhost:
   - servername: ca.usgo.org
     serveradmin: webmaster@usgo.org
@@ -20,7 +21,7 @@ vhost:
   - servername: aghs.cc
     serveralias: www.aghs.cc
     serveradmin: webmaster@usgo.org
-    documentroot: /var/www/aghs.cc
+    documentroot: /var/www/aghs.cc/public
     include_extra_config: false
     extra_params: |
          RewriteEngine on
@@ -44,7 +45,7 @@ vhost_ssl:
     serveralias: www.aghs.cc
     ssl_domains: [ aghs.cc, www.aghs.cc ]
     serveradmin: webmaster@usgo.org
-    documentroot: /var/www/aghs.cc
+    documentroot: /var/www/aghs.cc/public
     include_extra_config: true
     extra_params: |
           RewriteEngine on
