@@ -5,6 +5,9 @@
 # Add the Configuration Checks Registers
 - include_tasks: config_checks.yaml
 
+# Archive the Existing Installation
+- include_tasks: archive_existing_wp_install.yaml
+
 # Install the required PHP packages for wordpress
 - include_tasks: install_wordpress.yaml
 
