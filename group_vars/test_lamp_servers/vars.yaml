@@ -12,6 +12,9 @@ wordpress_database_user: "{{ vault_wordpress_database_user }}"
 wordpress_database_pass: "{{ vault_wordpress_database_pass }}"
 wordpress_table_prefix: "{{ vault_wordpress_table_prefix }}"
 
+# Wordpress Directory Configurations
+wordpress_uploads_dir: "/usgo_org_pulls/wordpress"
+
 vhost:
   - servername: test.usgo.org
     serveralias: www.test.usgo.org
