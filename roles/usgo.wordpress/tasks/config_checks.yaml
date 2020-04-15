@@ -8,3 +8,9 @@
   stat:
     path: "{{ wordpress_root }}/wp-salts.php"
   register: wp_salts
+
+- name: Check if the Old EJournal is Archived
+  find:
+    paths: "{{ usgos_org_www_archives_dir }}"
+    patterns: 'ejournal_website_*.bac.tar.gz'
+  register: ejounal_website_archive_regex_found
