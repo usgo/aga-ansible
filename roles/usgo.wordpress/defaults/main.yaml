@@ -15,7 +15,7 @@ usgos_www_root: '/var/www/usgo.org'
 usgos_org_www_archives_dir: "{{ usgo_www_root }}/usgo_org_past_releases"
 
 # EJournal Website Archive Filename
-ejournal_website_archive_filename: 'ejournal_website_{{ '%Y%m%d' | strftime(ansible_date_time.epoch) }}.bac.tar.gz'
+ejournal_website_archive_filename: "ejournal_website_{{ '%Y%m%d' | strftime(ansible_date_time.epoch) }}.bac.tar.gz"
 
 # USGO's Kabocha theme directory
 wordpress_kabocha_theme_dir: "{{ usgos_www_root }}/theme/wordpress"
