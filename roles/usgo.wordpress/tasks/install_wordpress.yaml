@@ -4,15 +4,15 @@
     name: "{{ item }}"
   with_items: "{{ wordpress_php_packages }}"
 
-- name: Download and UnArchive the latest Wordpress
+- name: Download and Unarchive the Latest Wordpress
   unarchive:
     src: 'https://wordpress.org/latest.tar.gz'
     dest: "{{ wordpress_root }}"
-    creates: "{{ wordpress_root }}"
     owner: root
     group: www-data
     mode: '0655'
     remote_src: yes
+    keep_newer: yes
     extra_opts: [--strip-components=1]
 
 - name: Add wp-config.php to the Wordpress install
