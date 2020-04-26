@@ -12,7 +12,7 @@ wordpress_charset: 'utf8'
 # External Directories
 # USGO's web root directory
 usgos_www_root: '/var/www/usgo.org'
-usgos_org_www_archives_dir: "{{ usgo_www_root }}/usgo_org_past_releases"
+usgos_org_www_archives_dir: "{{ usgos_www_root }}/usgo_org_past_releases"
 
 # EJournal Website Archive Filename
 ejournal_website_archive_filename: "ejournal_website_{{ '%Y%m%d' | strftime(ansible_date_time.epoch) }}.bac.tar.gz"
