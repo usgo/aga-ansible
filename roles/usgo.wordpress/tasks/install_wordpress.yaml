@@ -21,4 +21,4 @@
     dest: "{{ wordpress_root }}/wp-config.php"
     owner: root
     group: www-data
-    mode: '0655'
+    mode: '0650'
