@@ -5,6 +5,7 @@
     dest: "{{ wordpress_plugins_dir }}"
     owner: root
     group: www-data
+    mode: '0655'
     remote_src: yes
   with_items: "{{ wordpress_plugins }}"
 
