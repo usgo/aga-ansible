@@ -15,6 +15,14 @@
     keep_newer: yes
     extra_opts: [--strip-components=1]
 
+- name: Add .htaccess to The Wordpress Install
+  copy:
+    src: .htaccess
+    dest: "{{ wordpress_root }}/.htaccess"
+    owner: root
+    group: www-data
+    mode: '0655'
+
 - name: Add wp-config.php to the Wordpress install
   template:
     src: wp-config.php.j2
