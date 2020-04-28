@@ -4,6 +4,14 @@ agagd_db_user: agagd_db_ro_usr
 agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
+
+# Wordpress Database Configurations
+wordpress_database_host: "{{ vault_wordpress_database_host }}"
+wordpress_database_name: "{{ vault_wordpress_database_name }}"
+wordpress_database_user: "{{ vault_wordpress_database_user }}"
+wordpress_database_pass: "{{ vault_wordpress_database_pass }}"
+wordpress_table_prefix: "{{ vault_wordpress_table_prefix }}"
+
 vhost:
   - servername: usgo.org
     serveralias: www.usgo.org
