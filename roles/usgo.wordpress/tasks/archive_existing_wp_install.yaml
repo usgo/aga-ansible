@@ -1,0 +1,7 @@
+---
+- name: Archive the Existing Installation of EJournal Wordpress
+  archive:
+    path: "{{ usgos_www_root }}/news"
+    dest: "{{ usgos_org_www_archives_dir }}/{{ ejournal_website_archive_filename }}"
+    remove: yes
+  when: ejounal_website_archive_regex_found.matched < 1

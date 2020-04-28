@@ -1,0 +1,11 @@
+---
+- name: Link Kabocha to the Wordpress Install
+  file:
+    src: "{{ wordpress_kabocha_theme_dir }}"
+    dest: "{{ wordpress_themes_dir }}/{{ wordpress_theme_name }}"
+    owner: root
+    group: www-data
+    state: link
+    follow: False
+    force: yes
+  when: kabocha_theme.stat.exists
