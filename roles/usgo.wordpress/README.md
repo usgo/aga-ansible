@@ -47,17 +47,7 @@ is added.
 ### Wordpress Plugins and Themes
 | Name | Defaults |
 | ---- | -------- |
-| wordpress_plugins |
-add-to-any
-advanced-excerpt
-akismet
-amazon-polly
-broken-link-checker
-gallery-plugin
-glift-go-game
-maintenance-mode
-photo-gallery
-social-networks-auto-poster-facebook-twitter-g |
+| wordpress_plugins | add-to-any <br> advanced-excerpt <br> akismet <br> amazon-polly <br> broken-link-checker <br> gallery-plugin <br> glift-go-game <br> maintenance-mode <br> photo-gallery <br> social-networks-auto-poster-facebook-twitter-g |
 | wordpress_theme_name |  'kabocha' |
 | wordpress_debug_mode |  False |
 
