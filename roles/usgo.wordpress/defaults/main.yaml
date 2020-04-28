@@ -24,7 +24,7 @@ wordpress_kabocha_theme_dir: "{{ usgos_www_root }}/theme/wordpress"
 wordpress_root: "{{ usgos_www_root }}/news"
 wordpress_plugins_dir: "{{ wordpress_root }}/wp-content/plugins"
 wordpress_themes_dir: "{{ wordpress_root }}/wp-content/themes"
-wordpress_uploads_dir: '/var/www/usgo-news-uploads'
+wordpress_uploads_dir: '/usgo_org_pulls/wordpress'
 
 # Wordpress Plugins and Themes
 wordpress_plugins:
