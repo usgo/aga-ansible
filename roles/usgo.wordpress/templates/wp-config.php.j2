@@ -82,3 +82,6 @@ require_once( ABSPATH . 'wp-salts.php' );
 
 /** Sets up WordPress vars and included files. */
 require_once( ABSPATH . 'wp-settings.php' );
+
+/** Allow uploads of other filetypes, i.e., sgf **/
+define( 'ALLOW_UNFILTERED_UPLOADS', true );
