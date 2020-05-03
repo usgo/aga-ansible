@@ -1,0 +1,7 @@
+---
+- name: Make a Virtual Environment for the AGAGD
+  pip:
+    requirements: "{{ agagd_requirements_txt }}"
+    virtualenv: "{{ agagd_virtenv_directory }}"
+    virtual_python: python2.7
+    executable: pip
