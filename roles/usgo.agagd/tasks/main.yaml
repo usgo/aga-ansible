@@ -1,3 +1,6 @@
 ---
+# Install the AGAGD Application
+- include_tasks: install_agagd.yaml
+
 # Make a Virtual Environment for the AGAGD
 - include_tasks: make_virtenv.yaml
