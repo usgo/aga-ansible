@@ -67,6 +67,12 @@ vhost:
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 ``` 
 
+# Available Tags for Roles
+
+| Role | Tag(s) |
+| ---- | ------- |
+| usgo.agagd | usgo.agagd |
+
 ## Basic Usage
 * `shell> ansible-playbook -u [username] -K -i [inventory] [playbook.yml]`
 

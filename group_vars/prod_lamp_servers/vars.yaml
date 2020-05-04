@@ -49,4 +49,4 @@ vhost_ssl:
     documentroot: /var/www/agagd.usgo.org
     include_extra_config: true
     outside_extra_params: |
-          WSGIPythonPath /var/www/agagd.usgo.org/agagd_releases/agagd_may_2019/agagd:/var/www/agagd.usgo.org/agagd_python_virtenv/lib/python2.7/site-packages
+          WSGIPythonPath /var/www/agagd.usgo.org/agagd_app/agagd:/var/www/agagd.usgo.org/agagd_python_virtenv/lib/python2.7/site-packages
