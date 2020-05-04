@@ -12,7 +12,9 @@
         name: mysql
     - include_role:
         name: usgo.wordpress
-    - include_role:
+    - import_role:
         name: usgo.agagd
+      tags:
+        - usgo.agagd 
     - include_role:
         name: cron.update.wordpress
