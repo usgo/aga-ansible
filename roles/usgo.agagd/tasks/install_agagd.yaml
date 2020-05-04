@@ -15,5 +15,15 @@
     group: www-data
     mode: '0655'
     remote_src: yes
+    exclude:
+      - 'agagd/agagd/settings/local_settings.py'
     extra_opts: [--strip-components=1]
   notify: restart apache
+
+- name: Add local_settings.py to the AGAGD Install
+  template:
+    src: local_settings.py.j2
+    dest: "{{ agagd_root_directory }}/agagd_app/agagd/agagd/settings/local_settings.py"
+    owner: root
+    group: www-data
+    mode: '0650'
