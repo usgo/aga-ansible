@@ -13,4 +13,6 @@
     - include_role:
         name: usgo.wordpress
     - include_role:
+        name: usgo.agagd
+    - include_role:
         name: cron.update.wordpress
