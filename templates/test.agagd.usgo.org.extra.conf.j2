@@ -1,7 +1,7 @@
 # Define the agagd directories
-Define agagd_www_home /var/www/agagd.usgo.org
+Define agagd_www_home {{ item.documentroot }}
 Define agagd_python_virtenv_dir ${agagd_www_home}/agagd_python_virtenv/lib/python2.7/site-packages
-Define agagd_repo ${agagd_www_home}/current	
+Define agagd_repo ${agagd_www_home}/agagd_app
 
 ServerAdmin webmaster@usgo.org
 ServerName test.agagd.usgo.org
@@ -11,8 +11,8 @@ DocumentRoot ${agagd_repo}/agagd/agagd
 DirectoryIndex index.php index.html index.shtml
     
 # Error Logging
-ErrorLog /var/log/apache2/{{ item.servername }}.org-error.log 
-CustomLog /var/log/apache2/{{ item.servername }}vaccess.log combined
+ErrorLog /var/log/apache2/{{ item.servername }}-error.log 
+CustomLog /var/log/apache2/{{ item.servername }}-access.log combined
 
 # WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py	
 WSGIDaemonProcess test.agagd.usgo.org python-path=${agagd_repo}/agagd:${agagd_python_virtenv_dir} display-name=agagd-Django-app graceful-timeout=30 restart-interval=3600
