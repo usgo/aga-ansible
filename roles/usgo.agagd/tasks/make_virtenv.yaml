@@ -3,5 +3,4 @@
   pip:
     requirements: "{{ agagd_requirements_txt }}"
     virtualenv: "{{ agagd_virtenv_directory }}"
-    virtual_python: python2.7
-    executable: pip
+    virtualenv_python: python2.7
