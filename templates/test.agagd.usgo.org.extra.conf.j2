@@ -1,7 +1,7 @@
 # Define the agagd directories
-Define agagd_www_home /var/www/agagd.usgo.org
+Define agagd_www_home {{ item.documentroot }}
 Define agagd_python_virtenv_dir ${agagd_www_home}/agagd_python_virtenv/lib/python2.7/site-packages
-Define agagd_repo ${agagd_www_home}/current	
+Define agagd_repo ${agagd_www_home}/agagd_app
 
 ServerAdmin webmaster@usgo.org
 ServerName test.agagd.usgo.org

@@ -1,4 +1,7 @@
 ---
+# Include web handlers
+- include_tasks: roles/web/handlers/main.yaml
+
 # Install the AGAGD Application
 - include_tasks: install_agagd.yaml
 
