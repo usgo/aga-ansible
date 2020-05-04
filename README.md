@@ -67,7 +67,7 @@ vhost:
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 ``` 
 
-# Available Tags for Roles
+## Available Tags for Roles
 
 | Role | Tag(s) |
 | ---- | ------- |
