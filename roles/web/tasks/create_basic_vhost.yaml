@@ -10,6 +10,9 @@
   template:
     src: "{{ item.servername }}.extra.conf.j2"
     dest: "/etc/apache2/usgo_extra_confs/{{ item.servername }}.extra.conf"
+    owner: root
+    group: root
+    mode: '0640'
   notify:
     - restart apache
   with_items: "{{ vhost }}"
