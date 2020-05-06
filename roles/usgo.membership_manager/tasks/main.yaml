@@ -1,0 +1,3 @@
+---
+# Install the Membership Manager
+- import_tasks: install_membership_manager.yaml

@@ -36,6 +36,19 @@ Define usgo_members_root ${usgo_mm_root}/frontend
 Alias /mm ${usgo_mm_root}
 Alias /members ${usgo_members_root}
 
+## Membership Manager Environment
+SetEnv MM_ADMIN_DEBUG_MODE={{ mm_admin_debug_mode }}
+SetEnv MM_FRONTEND_DEBUG_MODE={{ mm_frontend_debug_mode }}
+SetEnv MM_DB_HOST={{ mm_db_host }}
+SetEnv MM_DB_NAME={{ mm_db_name }}
+SetEnv MM_DB_USER={{ mm_db_user }}
+SetEnv MM_DB_PASS={{ mm_db_pass }}
+
+## Membership Manager PayPal Environment
+SetEnv MM_PAYPAL_PAY_URL={{ mm_paypal_pay_url }}
+SetEnv PAYPAL_PDT_ID={{ mm_paypal_pdt_id }}
+SetEnv PAYPAL_BUSINESS_ID={{ mm_paypal_business_id }}
+
 <Directory ${usgo_mm_root}>
       Options +FollowSymLinks -Indexes -MultiViews
       AllowOverride all
