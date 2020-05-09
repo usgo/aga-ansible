@@ -6,8 +6,8 @@ agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
 
 ## Membership Manager Environment
-mm_admin_debug_mode: 'True'
-mm_frontend_debug_mode: 'False'
+mm_admin_debug_mode: 'false'
+mm_frontend_debug_mode: 'false'
 mm_admin_sitepath: "/mm/"
 mm_frontend_sitepath: "/members/"
 mm_site_url: 'https://www.test.usgo.org'
