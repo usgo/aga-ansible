@@ -8,6 +8,7 @@ agagd_secret_key: "{{ vault_agagd_secret_key }}"
 ## Membership Manager Environment
 mm_admin_debug_mode: 'false'
 mm_frontend_debug_mode: 'false'
+mm_scheduler_enabled: true
 mm_admin_sitepath: "/mm/"
 mm_frontend_sitepath: "/members/"
 mm_site_url: 'https://www.usgo.org'
