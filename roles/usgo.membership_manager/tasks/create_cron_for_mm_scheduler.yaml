@@ -1,0 +1,9 @@
+---
+- name: Create a Cron Job or the Membership Manager Scheduler
+  cron:
+    name: "Run the Membership Manager scheduler.php."
+    minute: 0
+    user: www-data
+    job: "{{ usgo_org_www_root }}/membership_manager/app/scheduler.php"
+    state: "{{ mm_scheduler_enabled | ternary('present', 'absent')}}"
+

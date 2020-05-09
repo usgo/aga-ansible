@@ -1,2 +1,3 @@
 ---
 usgo_org_www_root: "/var/www/usgo.org"
+mm_scheduler_enabled: false
