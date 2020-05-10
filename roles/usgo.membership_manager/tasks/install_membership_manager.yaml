@@ -1,0 +1,47 @@
+---
+- name: Get the Membership Manager from Private Repository and Move Into Archive
+  git:
+    version: master
+    repo: 'git@github.com:usgo/membership.git'
+    dest: "/tmp/membership_manager"
+  become: no
+
+- name: Make a Directory for the Membership Manager
+  file:
+    path: "{{ usgo_org_www_root }}/membership_manager"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+
+- name: Rsync the Membership Manager Application
+  synchronize:
+    src: "/tmp/membership_manager/mm_app/"
+    dest: "{{ usgo_org_www_root }}/membership_manager/app"
+    owner: no
+    group: no
+    mode: pull
+    rsync_opts:
+      - '--exclude=conf.php'
+      - '--exclude=frontend/conf.php'
+      - '--chown=www-data:www-data'
+      - '--chmod=D0755'
+  delegate_to: "{{ inventory_hostname }}"
+
+- name: Copy the Membership Manager Admin Configuration
+  copy:
+    src: "/tmp/membership_manager/config/conf.mm.default.php"
+    dest: "{{ usgo_org_www_root }}/membership_manager/app/conf.php"
+    owner: www-data
+    group: www-data
+    mode: '0650'
+    remote_src: yes
+
+- name: Copy the Membership Manager Frontend Configuration
+  copy:
+    src: "/tmp/membership_manager/config/conf.frontend.default.php"
+    dest: "{{ usgo_org_www_root }}/membership_manager/app/frontend/conf.php"
+    owner: www-data
+    group: www-data
+    mode: '0650'
+    remote_src: yes

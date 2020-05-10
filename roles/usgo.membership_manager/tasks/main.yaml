@@ -1,0 +1,6 @@
+---
+# Install the Membership Manager
+- import_tasks: install_membership_manager.yaml
+
+# Create a Cron Job for the Membership Manager Scheduler
+- import_tasks: create_cron_for_mm_scheduler.yaml

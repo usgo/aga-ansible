@@ -13,6 +13,10 @@
     - include_role:
         name: usgo.wordpress
     - import_role:
+        name: usgo.membership_manager
+      tags:
+        - usgo.membership_manager
+    - import_role:
         name: usgo.agagd
       tags:
         - usgo.agagd

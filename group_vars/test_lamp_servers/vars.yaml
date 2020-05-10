@@ -5,6 +5,22 @@ agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
 
+## Membership Manager Environment
+mm_admin_debug_mode: 'false'
+mm_frontend_debug_mode: 'false'
+mm_admin_sitepath: "/mm/"
+mm_frontend_sitepath: "/members/"
+mm_site_url: 'https://www.test.usgo.org'
+mm_db_host: "{{ vault_mm_db_host }}"
+mm_db_name: "{{ vault_mm_db_name }}"
+mm_db_user: "{{ vault_mm_db_user }}"
+mm_db_pass: "{{ vault_mm_db_pass }}"
+
+## Membership Manager PayPal Environment
+mm_paypal_pay_url: 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+mm_paypal_pdt_id:  "{{ vault_mm_paypal_pdt_id }}"
+mm_paypal_business_id:  "{{ vault_mm_paypal_business_id }}"
+
 # Wordpress Database Configurations
 wordpress_database_host: "{{ vault_wordpress_database_host }}"
 wordpress_database_name: "{{ vault_wordpress_database_name }}"
