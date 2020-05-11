@@ -1,9 +1,26 @@
 ---
+- name: Make a Directory for Scripts
+  file:
+    path: "{{ usgo_www_root }}/membership_manager/scripts"
+    state: directory
+    owner: www-data
+    group: root
+    mode: '0550'
+
+- name: Drop in Wrapper Script into the Membership Manager for the scheduler.php
+  template:
+    src: run_mm_scheduler.sh
+    dest: "{{ usgo_www_root }}/membership_manager/scripts/run_mm_scheduler.sh"
+    owner: www-data
+    group: root
+    mode: '0550'
+  when: "{{ mm_scheduler_enabled }}"
+
 - name: Create a Cron Job or the Membership Manager Scheduler
   cron:
     name: "Run the Membership Manager scheduler.php."
     minute: 0
     user: www-data
-    job: "/usr/bin/php -f {{ usgo_org_www_root }}/membership_manager/app/scheduler.php"
+    job: "{{ usgo_www_root }}/membership_manager/scripts/run_mm_scheduler.sh"
     state: "{{ mm_scheduler_enabled | ternary('present', 'absent')}}"
 
