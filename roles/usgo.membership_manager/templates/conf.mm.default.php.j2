@@ -1,0 +1,90 @@
+<?php
+
+define("BENCHMARK_START", microtime(true));
+
+/*
+ * Debugging Configuration
+ *
+ */
+if (getenv('MM_ADMIN_DEBUG_MODE') == 'true') {
+    define("DEBUG", 1);
+    error_reporting(E_ALL & ~E_NOTICE);
+    ini_set("display_errors", DEBUG);
+} else {
+    define("DEBUG", 0);
+    ini_set("display_errors", DEBUG);
+}
+
+ini_set("auto_detect_line_endings", 1);
+
+define("SITE_NAME", getenv('MM_SITE_NAME') ?: "Membership Manager");
+
+define("FILE_ROOT", dirname(__FILE__));
+define("IMAGE_UPLOAD_PATH", FILE_ROOT . "/static/images/upload");
+
+define("SITE_PATH", getenv('MM_ADMIN_SITEPATH') ? getenv('MM_ADMIN_SITEPATH') : "/");
+define("SITE_URL", getenv('MM_SITE_URL') ? getenv('MM_SITE_URL') . SITE_PATH : 'http://localhost:8080' . SITE_PATH);
+define("STATIC_URL", SITE_URL . "static/");
+define("IMAGE_UPLOAD_URL", SITE_PATH . "static/images/upload/");
+define("MEMBERS_URL", SITE_URL . "frontend/");
+define("MM_URL", SITE_URL);
+
+/* 2012-06-11 (Philip Waldron): Added function for http access rather than https */
+define("SITE_NONSECURE_URL", getenv('MM_SITE_URL') ? getenv('MM_SITE_URL') . SITE_PATH : 'http://localhost:8080' . SITE_PATH);
+define("STATIC_NONSECURE_URL", SITE_URL . "static/");
+/* End of change (Philip Waldron) */
+
+/**
+ * By default, we use .htaccess rewrites to pass the requested path to PHP.
+ * Disabling this allows the site to work using just the _path GET variable
+ * and no .htaccess rewrites.
+ **/
+define("PATH_VIA_HTACCESS", true);
+
+/**
+ * Generic contact address for things that aren't necessarily critical. Also
+ * used as a from-address for certain notifications.
+ **/
+#define("CONTACT_EMAIL", getenv('MM_CONTACT_EMAIL') ?: 'example@usgo.local');
+
+/**
+ * Recipient for when really bad things happen.
+ **/
+#define("ERROR_EMAIL", getenv('MM_ERROR_EMAIL') ?: 'example@usgo.local');
+
+# Temporary fix due to Apache2 not getting env vars for these values.
+/**
+ * Generic contact address for things that aren't necessarily critical. Also
+ * used as a from-address for certain notifications.
+ **/
+define("CONTACT_EMAIL", "{{ mm_contact_email }}");
+
+/**
+ * Recipient for when really bad things happen.
+ **/
+define("ERROR_EMAIL","{{ mm_error_email }}");
+
+
+/**
+ * Remove this to turn off sessions
+ **/
+define("SESSION_ID", substr(strtoupper(preg_replace("/[^a-zA-Z]/", "", SITE_NAME)), 0, 10));
+
+/**
+ * Requires all POST operations to have a nonce value. See dispatch() and
+ * sess_start()
+ **/
+define("CSRF_PROTECTION", 1);
+
+/**
+ * Database Configuration
+ * 
+ * Notes:
+ * - Remove this to prevent auto-connecting to the DB
+ **/
+define("DB_NAME", getenv("MM_DB_NAME") ?: "");
+define("DB_USER", getenv("MM_DB_USER") ?: "");
+define("DB_PASS", getenv("MM_DB_PASS") ?: "");
+define("DB_HOST", getenv("MM_DB_HOST") ?: "");
+
+?>
