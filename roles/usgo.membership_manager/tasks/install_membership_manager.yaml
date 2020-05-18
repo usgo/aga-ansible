@@ -30,18 +30,16 @@
 
 - name: Copy the Membership Manager Admin Configuration
   template:
-    src: "conf.mm.default.php"
+    src: "conf.mm.default.php.j2"
     dest: "{{ usgo_org_www_root }}/membership_manager/app/conf.php"
     owner: www-data
     group: www-data
     mode: '0650'
-    remote_src: yes
 
 - name: Copy the Membership Manager Frontend Configuration
   template:
-    src: "conf.frontend.default.php"
+    src: "conf.mm.frontend.php.j2"
     dest: "{{ usgo_org_www_root }}/membership_manager/app/frontend/conf.php"
     owner: www-data
     group: www-data
     mode: '0650'
-    remote_src: yes
