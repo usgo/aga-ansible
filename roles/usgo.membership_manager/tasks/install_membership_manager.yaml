@@ -29,8 +29,8 @@
   delegate_to: "{{ inventory_hostname }}"
 
 - name: Copy the Membership Manager Admin Configuration
-  copy:
-    src: "/tmp/membership_manager/config/conf.mm.default.php"
+  template:
+    src: "conf.mm.default.php"
     dest: "{{ usgo_org_www_root }}/membership_manager/app/conf.php"
     owner: www-data
     group: www-data
@@ -38,8 +38,8 @@
     remote_src: yes
 
 - name: Copy the Membership Manager Frontend Configuration
-  copy:
-    src: "/tmp/membership_manager/config/conf.frontend.default.php"
+  template:
+    src: "conf.frontend.default.php"
     dest: "{{ usgo_org_www_root }}/membership_manager/app/frontend/conf.php"
     owner: www-data
     group: www-data
