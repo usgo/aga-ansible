@@ -29,6 +29,11 @@ define("IMAGE_UPLOAD_URL", SITE_PATH . "static/images/upload/");
 define("MEMBERS_URL", SITE_URL . "frontend/");
 define("MM_URL", SITE_URL);
 
+/* 2012-06-11 (Philip Waldron): Added function for http access rather than https */
+define("SITE_NONSECURE_URL", getenv('MM_SITE_URL') ? getenv('MM_SITE_URL') . SITE_PATH : 'http://localhost:8080' . SITE_PATH);
+define("STATIC_NONSECURE_URL", SITE_URL . "static/");
+/* End of change (Philip Waldron) */
+
 /**
  * By default, we use .htaccess rewrites to pass the requested path to PHP.
  * Disabling this allows the site to work using just the _path GET variable
