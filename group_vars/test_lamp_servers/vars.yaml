@@ -10,6 +10,8 @@ mm_admin_debug_mode: 'false'
 mm_frontend_debug_mode: 'false'
 mm_admin_sitepath: "/mm/"
 mm_frontend_sitepath: "/members/"
+mm_contact_email: 'database+test@usgo.org'
+mm_error_email: 'webmaster+test@usgo.org'
 mm_site_url: 'https://www.test.usgo.org'
 mm_db_host: "{{ vault_mm_db_host }}"
 mm_db_name: "{{ vault_mm_db_name }}"
