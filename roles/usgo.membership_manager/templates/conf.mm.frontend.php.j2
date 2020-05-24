@@ -60,9 +60,13 @@ define("DB_HOST", getenv("MM_DB_HOST") ?: "");
  * - PAYPAL_PDT_ID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx7-Jxxxxxx-zxxxxxxx 
  * - PAYPAL_BUSINESS_ID: XXXXXXXXXXXXXXX2
  */
-define("PAYPAL_PAY_URL", getenv("MM_PAYPAL_PAY_URL") ?: "https://www.sandbox.paypal.com/cgi-bin/webscr");
-define("PAYPAL_PDT_ID", getenv("MM_PAYPAL_PDT_ID") ?: "");
-define("PAYPAL_BUSINESS_ID", getenv("MM_PAYPAL_BUSINESS_ID") ?: "");
+#define("PAYPAL_PAY_URL", getenv("MM_PAYPAL_PAY_URL") ?: "https://www.sandbox.paypal.com/cgi-bin/webscr");
+#define("PAYPAL_PDT_ID", getenv("MM_PAYPAL_PDT_ID") ?: "");
+#define("PAYPAL_BUSINESS_ID", getenv("MM_PAYPAL_BUSINESS_ID") ?: "");
+
+define("PAYPAL_PAY_URL", "{{ mm_paypal_pay_url }}" );
+define("PAYPAL_PDT_ID", "{{ mm_paypal_pdt_id }}" );
+define("PAYPAL_BUSINESS_ID", "{{ mm_paypal_business_id }}");
 
 /**
  * Amazon Configuration
