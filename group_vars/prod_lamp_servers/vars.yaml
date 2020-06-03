@@ -5,6 +5,14 @@ agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
 
+# Current Production AGAGD Version
+# - Untagged
+# - Commit Description: Merge pull request #76 from EarthSchlange/patch_chapter_in_search_001
+# - Date: May 18, 2020
+# Note(s): 
+# - The SHA-1 is due to current prod version being untagged. 
+agagd_version: 'f0bfbd351c'
+
 ## Membership Manager Environment
 mm_admin_debug_mode: 'false'
 mm_frontend_debug_mode: 'false'
