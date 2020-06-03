@@ -4,3 +4,4 @@
     requirements: "{{ agagd_requirements_txt }}"
     virtualenv: "{{ agagd_virtenv_directory }}"
     virtualenv_python: python2.7
+  when: agagd_download.changed
