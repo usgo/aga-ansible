@@ -5,10 +5,6 @@ agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
 
-# AGAGD Version
-agagd_version: "FixesPriorToRemovalRatingsPages"
-
-
 ## Membership Manager Environment
 mm_admin_debug_mode: 'false'
 mm_frontend_debug_mode: 'false'
