@@ -32,7 +32,7 @@ Alias /robots.txt ${agagd_repo}/agagd/static/robots.txt
 
 AliasMatch ^/([^/]*\.css) ${agagd_repo}/agagd/static/$1
 
-#Alias /media/ /var/www/agagd.usgo.org/test/repo/agagd/media/
+Alias /media/ ${agagd_repo}/agagd/media/
 Alias /static/ ${agagd_repo}/agagd/static/
 
 #<Directory ${agagd_www_home}>
@@ -49,6 +49,10 @@ Alias /static/ ${agagd_repo}/agagd/static/
 </Directory>
 
 WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py
+
+<Location /media>
+    SetHandler None
+</Location>
 
 <Directory ${agagd_repo}/agagd/agagd>
     <Files wsgi.py>
