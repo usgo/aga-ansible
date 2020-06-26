@@ -10,11 +10,12 @@ DocumentRoot ${agagd_repo}/agagd/agagd
 DirectoryIndex index.php index.html index.shtml
     
 # Error Logging
+LogLevel info
 ErrorLog /var/log/apache2/{{ item.servername }}-error.log 
 CustomLog /var/log/apache2/{{ item.servername }}-access.log combined
 
 # WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py	
-WSGIDaemonProcess agagd.usgo.org python-path=${agagd_repo}/agagd:${agagd_python_virtenv_dir} display-name=agagd-Django-app graceful-timeout=30 restart-interval=3600
+WSGIDaemonProcess agagd.usgo.org python-path=${agagd_repo}/agagd:${agagd_python_virtenv_dir} display-name=agagd-Django-app processes=1 threads=5 graceful-timeout=30 restart-interval=1800
 #WSGIPythonPath /var/www/agagd.usgo.org/agagd_releases/agagd_may_2019/agagd:/var/www/agagd.usgo.org/agagd_python_virtenv/lib/python2.7/site-packages
 WSGIProcessGroup agagd.usgo.org
 WSGIApplicationGroup %{GLOBAL}
@@ -31,7 +32,7 @@ Alias /robots.txt ${agagd_repo}/agagd/static/robots.txt
 
 AliasMatch ^/([^/]*\.css) ${agagd_repo}/agagd/static/$1
 
-#Alias /media/ /var/www/agagd.usgo.org/test/repo/agagd/media/
+Alias /media/ ${agagd_repo}/agagd/media/
 Alias /static/ ${agagd_repo}/agagd/static/
 
 #<Directory ${agagd_www_home}>
@@ -48,6 +49,10 @@ Alias /static/ ${agagd_repo}/agagd/static/
 </Directory>
 
 WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py
+
+<Location /media>
+    SetHandler None
+</Location>
 
 <Directory ${agagd_repo}/agagd/agagd>
     <Files wsgi.py>

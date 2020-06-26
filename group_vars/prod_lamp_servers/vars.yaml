@@ -7,7 +7,7 @@ agagd_secret_key: "{{ vault_agagd_secret_key }}"
 
 # Current Production AGAGD Version
 # - Date: June 12, 2020
-agagd_version: '2020.06.12-alpha'
+agagd_version: '2020.06.26-alpha'
 
 ## Membership Manager Environment
 mm_admin_debug_mode: 'false'
