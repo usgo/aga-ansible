@@ -4,7 +4,7 @@ Define agagd_python_virtenv_dir ${agagd_www_home}/agagd_python_virtenv/lib/pytho
 Define agagd_repo ${agagd_www_home}/agagd_app
 
 ServerAdmin webmaster@usgo.org
-ServerName agagd.usgo.org
+ServerName {{ item.servername }}
 
 DocumentRoot ${agagd_repo}/agagd/agagd
 DirectoryIndex index.php index.html index.shtml
@@ -15,9 +15,9 @@ ErrorLog /var/log/apache2/{{ item.servername }}-error.log
 CustomLog /var/log/apache2/{{ item.servername }}-access.log combined
 
 # WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py	
-WSGIDaemonProcess agagd.usgo.org python-path=${agagd_repo}/agagd:${agagd_python_virtenv_dir} display-name=agagd-Django-app processes=1 threads=5 graceful-timeout=30 restart-interval=1800
+WSGIDaemonProcess {{ item.servername }} python-path=${agagd_repo}/agagd:${agagd_python_virtenv_dir} display-name=agagd-Django-app processes=1 threads=5 graceful-timeout=30 restart-interval=1800
 #WSGIPythonPath /var/www/agagd.usgo.org/agagd_releases/agagd_may_2019/agagd:/var/www/agagd.usgo.org/agagd_python_virtenv/lib/python2.7/site-packages
-WSGIProcessGroup agagd.usgo.org
+WSGIProcessGroup {{ item.servername }}
 WSGIApplicationGroup %{GLOBAL}
 
 SetEnv DJANGO_SETTINGS_MODULE "agagd.settings.prod"
@@ -55,6 +55,7 @@ WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py
 </Location>
 
 <Directory ${agagd_repo}/agagd/agagd>
+    Require expr %{HTTP_HOST} == "{{ item.servername }}"
     <Files wsgi.py>
         Require all granted
     </Files>
