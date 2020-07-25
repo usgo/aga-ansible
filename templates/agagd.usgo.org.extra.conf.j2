@@ -55,8 +55,7 @@ WSGIScriptAlias / ${agagd_repo}/agagd/agagd/wsgi.py
 </Location>
 
 <Directory ${agagd_repo}/agagd/agagd>
-    Require expr %{HTTP_HOST} == "{{ item.servername }}"
     <Files wsgi.py>
-        Require all granted
+        Require expr %{HTTP_HOST} == "{{ item.servername }}"
     </Files>
 </Directory>
