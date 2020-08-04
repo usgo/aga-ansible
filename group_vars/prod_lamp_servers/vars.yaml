@@ -7,8 +7,7 @@ agagd_secret_key: "{{ vault_agagd_secret_key }}"
 agagd_google_analytics_tracking_id: "{{ vault_agagd_google_analytics_tracking_id }}"
 
 # Current Production AGAGD Version
-# - Date: June 12, 2020
-agagd_version: '2020.06.26-alpha'
+agagd_version: '2020.07.30-alpha'
 
 ## Membership Manager Environment
 mm_admin_debug_mode: 'false'
