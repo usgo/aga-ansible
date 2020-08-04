@@ -26,6 +26,8 @@ SetEnv AGAGD_USER "{{ agagd_db_user }}"
 SetEnv TEMPLATE_DIR "${agagd_repo}/agagd/templates"
 SetEnv MYSQL_PASS "{{ agagd_db_user_password }}"
 SetEnv SECRET_KEY "{{ agagd_secret_key }}"
+SetEnv GOOGLE_ANALYTICS_TRACKING_ID "{{ agagd_google_analytics_tracking_id }}"
+
 
 Alias /robots.txt ${agagd_repo}/agagd/static/robots.txt
 #Alias /favicon.ico /var/www/agagd.usgo.org/test/repo/agagd/static/favicon.ico
