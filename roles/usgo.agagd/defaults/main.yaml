@@ -2,5 +2,8 @@
 agagd_root_directory: "/var/www/agagd.usgo.org"
 agagd_app_directory: "{{ agagd_root_directory }}/agagd_app"
 agagd_requirements_txt: "{{ agagd_app_directory }}/requirements.txt"
-agagd_virtenv_directory: "{{ agagd_root_directory }}/agagd_python_virtenv"
+agagd_virtenv_directory_name: "agagd_python_virtenv"
+agagd_virtenv_directory: "{{ agagd_root_directory }}/{{ agagd_virtenv_directory_name}}"
 agagd_version: "master"
+agagd_virtenv_python_version: "python2.7"
+agagd_uses_python3: false
