@@ -1,0 +1,11 @@
+---
+- name: Install Python3.7
+  apt:
+    pkg:
+      - python3.7
+      - python3.7-dev
+      - python3-pip
+      - default-libmysqlclient-dev 
+      - libapache2-mod-wsgi-py3  
+      - build-essential
+  notify: restart apache2

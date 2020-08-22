@@ -2,5 +2,13 @@
 # Install the AGAGD Application
 - include_tasks: install_agagd.yaml
 
+# Install Python3 Requirements
+- include_tasks: install_python3.yaml
+  when: agagd_uses_python3|bool == true
+
+# Install Default Python Requirements
+- include_tasks: install_python.yaml
+  when: agagd_uses_python3|bool == false
+
 # Make a Virtual Environment for the AGAGD
 - include_tasks: make_virtenv.yaml

@@ -1,0 +1,7 @@
+---
+- name: Install the Default Python 2.7 and lib-apache2-mod-wsgi
+  apt:
+    pkg:
+      - python
+      - python-dev
+      - lib-apache2-mod-wsgi    
