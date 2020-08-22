@@ -1,7 +1,18 @@
----
+- name: Install PIP VirtualEnv
+  pip:
+    name: virtualenv
+
+- name: Set Directory Permissions for the AGAGD Application
+  file:
+    path: "{{ agagd_virtenv_directory }}"
+    owner: root
+    group: www-data
+    state: directory
+    mode: '0755'
+
 - name: Make a Virtual Environment for the AGAGD
   pip:
     requirements: "{{ agagd_requirements_txt }}"
     virtualenv: "{{ agagd_virtenv_directory }}"
-    virtualenv_python: python2.7
-  when: agagd_download.changed
+    virtualenv_python: "{{ agagd_virtenv_python_version }}"
+  notify: restart apache
