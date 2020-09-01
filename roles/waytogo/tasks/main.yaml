@@ -5,7 +5,7 @@
     state: directory
     mode: '0755'
 
-- name: Unarchive a file that needs to be downloaded (added in 2.0)
+- name: Unarchive and Download the Way to Go Application
   unarchive:
     src: https://gitlab.com/way-to-go/way-to-go.gitlab.io/-/jobs/artifacts/master/download?job=pages
     dest: /var/www/wtg.usgo.org
