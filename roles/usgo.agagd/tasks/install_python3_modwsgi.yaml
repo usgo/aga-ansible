@@ -1,0 +1,6 @@
+---
+- name: Install mod-wsgi for Python3
+  apt:
+    pkg:
+      - libapache2-mod-wsgi-py3
+  notify: restart apache2

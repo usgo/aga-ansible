@@ -1,0 +1,7 @@
+---
+# TODO: Remove when installing Python 3`
+- name: Install mod-wsgi for Python
+  apt:
+    pkg:
+      - libapache2-mod-wsgi
+  notify: restart apache2

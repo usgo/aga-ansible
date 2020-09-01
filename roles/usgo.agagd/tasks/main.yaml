@@ -4,10 +4,16 @@
 
 # Install Python3 Requirements
 - include_tasks: install_python3.yaml
-  when: agagd_uses_python3|bool == true
 
 # Install Default Python Requirements
 - include_tasks: install_python.yaml
+
+# Install Mod WSGI for Python3
+- include_tasks: install_python3_modwsgi.yaml
+  when: agagd_uses_python3|bool == true
+
+# Install Mod WSGI for Python
+- include_tasks: install_python_modwsgi.yaml 
   when: agagd_uses_python3|bool == false
 
 # Make a Virtual Environment for the AGAGD
