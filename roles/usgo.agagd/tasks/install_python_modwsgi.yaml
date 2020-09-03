@@ -4,4 +4,4 @@
   apt:
     pkg:
       - libapache2-mod-wsgi
-  notify: restart apache2
+  notify: restart apache
