@@ -1,7 +1,7 @@
 ---
 - name: Get the Membership Manager from Private Repository and Move Into Archive
   git:
-    version: master
+    version: "{{ usgo_membership_manager_version }}"
     repo: 'git@github.com:usgo/membership.git'
     dest: "/tmp/membership_manager"
   become: no
