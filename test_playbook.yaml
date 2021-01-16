@@ -16,8 +16,12 @@
         cache_valid_time: 3600
     - include_role: 
         name: web
-    - include_role: 
+    - import_role:
         name: mysql
+      tags:
+        - usgo.mysql
+      vars:
+        mysql_bind_address: '0.0.0.0'
     - include_role:
         name: usgo.wordpress
     - import_role:
