@@ -1,4 +1,12 @@
 ---
+- hosts: all
+  become: yes
+  tasks:
+    - import_role:
+        name: usgo.devops_user
+      tags:
+        - usgo.devops_user
+
 - hosts: test_lamp_servers
   become: yes
   tasks:
@@ -12,10 +20,6 @@
         name: mysql
     - include_role:
         name: usgo.wordpress
-    - import_role:
-        name: usgo.devops_user
-      tags:
-        - usgo.devops_user
     - import_role:
         name: usgo.membership_manager
       tags:
