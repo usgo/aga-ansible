@@ -16,3 +16,10 @@
     group: root
     mode: 0440
     validate: "visudo -cf %s"
+
+- name: Add public keys for authorized devops users
+  authorized_key:
+    user: "{{ devops_username }}"
+    state: present
+    key: "https://github.com/{{ item }}.keys"
+  loop: "{{ authorized_users|flatten(levels=1) }}"
