@@ -1,0 +1,4 @@
+---
+devops_username: 'usgo_devops'
+devops_shell: '/bin/bash'
+devops_user_comment: 'Deployment user for devops'

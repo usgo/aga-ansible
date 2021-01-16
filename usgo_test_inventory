@@ -1,2 +1,5 @@
 [test_lamp_servers]
 test.usgo.org ansible_host=23.92.27.85
+
+[test_frontend_servers]
+usgo_frontend ansible_host=66.228.58.174
