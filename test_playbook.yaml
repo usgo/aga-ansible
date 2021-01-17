@@ -27,7 +27,7 @@
     - import_role:
         name: usgo.membership_manager
       tags:
-        - usgo.membership_manager
+        - usgo.membership
     - import_role:
         name: usgo.agagd
       tags:
