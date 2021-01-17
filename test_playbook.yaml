@@ -7,7 +7,7 @@
       tags:
         - usgo.devops_user
 
-- hosts: test_lamp_servers
+- hosts: lamp_servers
   become: yes
   tasks:
     - name: "Updating cache the test lamp servers if not updated in last hour"
