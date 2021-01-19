@@ -4,6 +4,7 @@
     version: "{{ usgo_membership_manager_version }}"
     repo: 'git@github.com:usgo/membership.git'
     dest: "/tmp/membership_manager"
+    accept_hostkey: yes
   become: no
 
 - name: Make a Directory for the Membership Manager
