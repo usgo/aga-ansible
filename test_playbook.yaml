@@ -7,6 +7,13 @@
       tags:
         - usgo.devops_user
 
+- hosts: frontend_servers
+  tasks:
+    - import_role:
+        name: usgo.agagd
+      tags:
+        - usgo.agagd2
+
 - hosts: lamp_servers
   become: yes
   tasks:
