@@ -29,8 +29,8 @@ associated with certbot and lets encrypt that enable HTTPs on our servers.
 ssh_args = -o ForwardAgent=yes -C -o ControlMaster=auto -o ControlPersist=60s
 ```
 
-** Note: Host key checking can be disabled as well; however, consider the implications before doing so.
-For more details see: [Connection Methods - Managing Host Key Checking][3] **
+**Note: Host key checking can be disabled as well; however, consider the implications before doing so.
+For more details see: [Connection Methods - Managing Host Key Checking][3]**
 
 [3]: https://docs.ansible.com/ansible/latest/user_guide/connection_details.html#managing-host-key-checking
 
