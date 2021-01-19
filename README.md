@@ -22,6 +22,34 @@ associated with certbot and lets encrypt that enable HTTPs on our servers.
 * python 3
 * ansible
 * ssh public key in the `~/.ssh/authorized_keys`
+* `~/.ansible.cfg` configured to allow the local ssh agent to be forwarded i.e.,
+
+```
+[ssh_connection]
+ssh_extra_args = -o FowardAgent=yes
+```
+
+** Note: Host key checking can be disabled as well; however, consider the implications before doing so.
+For more details see: [Connection Methods - Managing Host Key Checking][3] **
+
+[3]: https://docs.ansible.com/ansible/latest/user_guide/connection_details.html#managing-host-key-checking
+
+* `~/.ansible.cfg` also requires that python3 be enabled:
+
+```
+[defaults]
+interpreter_python=python3
+```
+
+* `~/.ansible.cfg`
+
+```
+[defaults]
+interpreter_python=python3
+
+[ssh_connection]
+ssh_extra_args = -o FowardAgent=yes
+```
 
 ## Adding a vhost
 1) Create a folder for the inventory group within group_vars
