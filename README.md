@@ -26,7 +26,7 @@ associated with certbot and lets encrypt that enable HTTPs on our servers.
 
 ```
 [ssh_connection]
-ssh_extra_args = -o FowardAgent=yes
+ssh_args = -o ForwardAgent=yes -C -o ControlMaster=auto -o ControlPersist=60s
 ```
 
 ** Note: Host key checking can be disabled as well; however, consider the implications before doing so.
@@ -48,7 +48,7 @@ interpreter_python=python3
 interpreter_python=python3
 
 [ssh_connection]
-ssh_extra_args = -o FowardAgent=yes
+ssh_args = -o ForwardAgent=yes -C -o ControlMaster=auto -o ControlPersist=60s
 ```
 
 ## Adding a vhost
