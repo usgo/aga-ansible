@@ -9,7 +9,7 @@
 
 - name: Make a Directory for the Membership Manager
   file:
-    path: "{{ usgo_org_www_root }}/membership_manager"
+    path: "{{ mm_root_dir }}"
     state: directory
     owner: www-data
     group: www-data
@@ -18,7 +18,7 @@
 - name: Rsync the Membership Manager Application
   synchronize:
     src: "/tmp/membership_manager/mm_app/"
-    dest: "{{ usgo_org_www_root }}/membership_manager/app"
+    dest: "{{ mm_app_dir }}"
     owner: no
     group: no
     mode: pull
@@ -32,7 +32,7 @@
 - name: Copy the Membership Manager Admin Configuration
   template:
     src: "conf.mm.default.php.j2"
-    dest: "{{ usgo_org_www_root }}/membership_manager/app/conf.php"
+    dest: "{{ mm_app_dir }}/conf.php"
     owner: www-data
     group: www-data
     mode: '0650'
@@ -40,7 +40,7 @@
 - name: Copy the Membership Manager Frontend Configuration
   template:
     src: "conf.mm.frontend.php.j2"
-    dest: "{{ usgo_org_www_root }}/membership_manager/app/frontend/conf.php"
+    dest: "{{ mm_app_dir }}/frontend/conf.php"
     owner: www-data
     group: www-data
     mode: '0650'
