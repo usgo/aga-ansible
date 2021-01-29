@@ -10,6 +10,10 @@
 - hosts: frontend_servers
   tasks:
     - import_role:
+        name: web
+      tags:
+        - usgo.web2
+    - import_role:
         name: usgo.agagd
       tags:
         - usgo.agagd2
