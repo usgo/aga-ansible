@@ -8,16 +8,48 @@ agagd_secret_key: "{{ vault_agagd_frontend_secret_key }}"
 agagd_virtenv_python_version: "python2.7"
 agagd_virtenv_directory_name: "agagd_python_virtenv"
 
+## Membership Manager Environment
+mm_admin_debug_mode: 'false'
+mm_frontend_debug_mode: 'false'
+mm_root_dir: "/var/www/membership.usgo.org"
+mm_app_dir: "{{ mm_root_dir }}/app"
+mm_admin_sitepath: "/mm/"
+mm_frontend_sitepath: "/members/"
+mm_contact_email: 'database+test@usgo.org'
+mm_error_email: 'webmaster+test@usgo.org'
+mm_site_url: 'https://www.test.usgo.org'
+mm_db_host: "{{ vault_mm_backend_db_host }}"
+mm_db_name: "{{ vault_mm_db_name }}"
+mm_db_user: "{{ vault_mm_frontend_db_user }}"
+mm_db_pass: "{{ vault_mm_frontend_db_pass }}"
+
+## Membership Manager PayPal Environment
+mm_paypal_pay_url: 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+mm_paypal_pdt_id:  "{{ vault_mm_paypal_pdt_id }}"
+mm_paypal_business_id:  "{{ vault_mm_paypal_business_id }}"
 vhost:
+  - servername: beta.membership.usgo.org
+    serveradmin: webmaster@usgo.org
+    documentroot: "{{ mm_root_dir }}"
+    include_extra_config: false
+    extra_params: |
+          RewriteEngine on
+          RewriteCond %{SERVER_NAME} =beta.membership.usgo.org
+          RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
   - servername: agagd2.usgo.org
     serveradmin: webmaster@usgo.org
     documentroot: /var/www/agagd.usgo.org
-    include_extra_config: true
+    include_extra_config: false
     extra_params: |
           RewriteEngine on
           RewriteCond %{SERVER_NAME} =agagd2.usgo.org
           RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 vhost_ssl:
+  - servername: beta.membership.usgo.org
+    ssl_domains: [ beta.membership.usgo.org ]
+    serveradmin: webmaster@usgo.org
+    documentroot: "{{ mm_root_dir }}"
+    include_extra_config: true
   - servername: agagd2.usgo.org
     ssl_domains: [ agagd2.usgo.org ]
     serveradmin: webmaster@usgo.org
