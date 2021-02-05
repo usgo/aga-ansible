@@ -1,0 +1,25 @@
+---
+- name: Create devops user for deployments
+  user:
+    name: "{{ devops_username }}"
+    shell: "{{ devops_shell }}"
+    comment: "{{ devops_user_comment }}"
+    password_lock: yes
+
+- name: Add devops user to sudoers
+  lineinfile:
+    path: "/etc/sudoers.d/{{ devops_username }}"
+    line: "{{ devops_username }} ALL=(ALL) NOPASSWD: ALL"
+    state: present
+    create: yes
+    owner: root
+    group: root
+    mode: 0440
+    validate: "visudo -cf %s"
+
+- name: Add public keys for authorized devops users
+  authorized_key:
+    user: "{{ devops_username }}"
+    state: present
+    key: "https://github.com/{{ item }}.keys"
+  loop: "{{ authorized_users|flatten(levels=1) }}"

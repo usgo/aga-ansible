@@ -1,0 +1,49 @@
+DocumentRoot {{ item.documentroot }}
+
+LogLevel info ssl:warn
+
+ErrorLog ${APACHE_LOG_DIR}/{{ item.servername }}-error.log
+CustomLog ${APACHE_LOG_DIR}/{{ item.servername }}-access.log combined
+
+# Define the location of the membership manager
+Define usgo_mm_root {{ mm_app_dir }}
+Define usgo_members_root ${usgo_mm_root}/frontend
+
+## Url Locations of the Membership Manager Applications
+Alias /mm ${usgo_mm_root}
+Alias /members ${usgo_members_root}
+
+## Redirects the server root to {{ item.servername }}/members
+RewriteEngine on
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule (.*) /members/ [R=301]
+
+## Membership Manager Environment
+SetEnv MM_ADMIN_DEBUG_MODE {{ mm_admin_debug_mode }}
+SetEnv MM_FRONTEND_DEBUG_MODE {{ mm_frontend_debug_mode }}
+SetEnv MM_SITE_URL {{ mm_site_url }}
+SetEnv MM_CONTACT_EMAIL {{ mm_contact_email }}
+Setenv MM_ERROR_EMAIL {{ mm_error_email }}
+SetEnv MM_ADMIN_SITEPATH {{ mm_admin_sitepath }}
+SetEnv MM_FRONTEND_SITEPATH {{ mm_frontend_sitepath }}
+SetEnv MM_DB_HOST {{ mm_db_host }}
+SetEnv MM_DB_NAME {{ mm_db_name }}
+SetEnv MM_DB_USER {{ mm_db_user }}
+SetEnv MM_DB_PASS {{ mm_db_pass }}
+
+## Membership Manager PayPal Environment
+#SetEnv MM_PAYPAL_PAY_URL {{ mm_paypal_pay_url }}
+#SetEnv PAYPAL_PDT_ID {{ mm_paypal_pdt_id }}
+#SetEnv PAYPAL_BUSINESS_ID {{ mm_paypal_business_id }}
+
+<Directory ${usgo_mm_root}>
+      Options +FollowSymLinks -Indexes -MultiViews
+      AllowOverride all
+      Require all granted
+</Directory>
+
+<Directory ${usgo_members_root}>
+      Options -Indexes -MultiViews
+      AllowOverride all
+      Require all granted
+</Directory>

@@ -1,4 +1,3 @@
-local_inventory
 .test_vault_pass
 .prod_vault_pass
 .prod_app_vault_pass

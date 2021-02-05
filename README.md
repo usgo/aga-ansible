@@ -22,6 +22,34 @@ associated with certbot and lets encrypt that enable HTTPs on our servers.
 * python 3
 * ansible
 * ssh public key in the `~/.ssh/authorized_keys`
+* `~/.ansible.cfg` configured to allow the local ssh agent to be forwarded i.e.,
+
+```
+[ssh_connection]
+ssh_args = -o ForwardAgent=yes -C -o ControlMaster=auto -o ControlPersist=60s
+```
+
+**Note: Host key checking can be disabled as well; however, consider the implications before doing so.
+For more details see: [Connection Methods - Managing Host Key Checking][3]**
+
+[3]: https://docs.ansible.com/ansible/latest/user_guide/connection_details.html#managing-host-key-checking
+
+* `~/.ansible.cfg` also requires that python3 be enabled:
+
+```
+[defaults]
+interpreter_python=python3
+```
+
+* `~/.ansible.cfg`
+
+```
+[defaults]
+interpreter_python=python3
+
+[ssh_connection]
+ssh_args = -o ForwardAgent=yes -C -o ControlMaster=auto -o ControlPersist=60s
+```
 
 ## Adding a vhost
 1) Create a folder for the inventory group within group_vars
@@ -79,9 +107,9 @@ vhost:
 ## Ansible Usage with Limits
 * `shell> ansible-playbook -u [username] -K -i [inventory] [playbook.yaml] --limit='[host1,host2]'`
 
+## Ansible Usage Add Devops User to New Server
+* `shell>  ansible-playbook -K -i [inventory] [playbook.yaml] --tags='usgo.devops_user' --limit [hostname]`
+
 ## Ansible Vault Usage
 * `shell> ansible-playbook --ask-vault-pass -u [username] -K -i [inventory] [playbook.yaml]`
 * `shell> ansible-playbook --vault-password-file=[vault_password_file] -K -i [inventory] [playbook.yaml]`
-
-## Notes:
-* Production lamp is not yet configured with ansible, so --limit must be set to only prod_app_servers.

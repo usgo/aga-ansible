@@ -1,4 +1,6 @@
 ---
 usgo_membership_manager_version: 'master'
 usgo_org_www_root: "/var/www/usgo.org"
+mm_root_dir: "{{ usgo_org_www_root }}/membership_manager"
+mm_app_dir: "{{ mm_root_dir }}/app"
 mm_scheduler_enabled: false
