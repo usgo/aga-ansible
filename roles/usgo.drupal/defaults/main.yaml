@@ -18,3 +18,6 @@ usgo_drupal_current_theme_location: "{{ usgo_drupal_project_dir }}/theme"
 # USGO Drupal Link Paths
 usgo_drupal_files_link_path: "{{ usgo_drupal_files }}"
 usgo_drupal_current_theme_link_path: "{{ usgo_drupal_themes_dir }}/kabocha"
+
+# USGO Github Authentication
+usgo_github_token: ''

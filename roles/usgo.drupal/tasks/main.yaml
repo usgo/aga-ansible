@@ -1,16 +1,23 @@
 ---
-- name: Get USGO's Custom Modules
-  git:
-    src: git@github.com:usgo/usgo_drupal_custom_modules.git
-    dest: "/tmp/custom_drupal_modules"
-    depth: 1
-    version: 'master'
-  become: no
+- name: Get the JSON Response from Github's API for USGO's Custom Drupal Modules
+  uri:
+    src: "https://api.github.com/?access_token={{ usgo_github_token }}"
+    return_content: true
+  register: usgos_custom_modules_json_response
+
+- name: Download USGO's Custom Drupal Modules
+  unarchive:
+    src: "{{ usgos_custom_modules_json_response.json.tarball_url }}?access_token={{ usgo_github_token }}"
+    dest: "{{ usgo_drupal_dir }}"
+    owner: root
+    group: www-data
+    mode: '0655'
+    remote_src: yes
 
 - name: Get Drupal Modules
   unarchive: 
     src: "https://ftp.drupal.org/files/projects/{{ item.name }}-{{ item.version }}.tar.gz"
-    dest: "{{ usgo_drupal_dir }}"
+    dest: "{{ usgo_drupal_modules_dir }}"
     owner: root
     group: www-data
     mode: '0655'
@@ -26,20 +33,3 @@
     group: www-data
     mode: '0655'
     remote_src: yes
-
-- name: Install Custom Modules
-  synchronize:
-    src: "/tmp/custom_drupal_modules/{{ item.name }}"
-    dest: "{{ usgo_drupal_modules_dir }}/{{ item.name }}"
-    owner: no
-    group: no
-    mode: pull
-    rsync_opts:
-      - '--chown=www-data:www-data'
-      - '--chmod=D0755'  
-  with_items: "{{ usgo_custom_drupal_modules }}" 
-
-- name: Drop the Temp Directory for USGO's Custom Drupal Modules
-  file:
-    path: '/tmp/custom_drupal_modules'
-    state: absent
