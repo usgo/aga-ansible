@@ -16,6 +16,7 @@
     mode: '0655'
     remote_src: yes
     extra_opts: [--strip-components=1]
+  notify: drush clear-cache
 
 - name: Copy a the settings.php for Drupal 7 Version
   ansible.builtin.template:
@@ -50,6 +51,7 @@
     mode: '0655'
     remote_src: yes
     extra_opts: [--strip-components=1]
+  notify: drush clear-cache
 
 - name: Get Drupal Modules
   unarchive: 
@@ -61,6 +63,7 @@
     remote_src: yes
   with_items: "{{ usgo_drupal_modules }}"
   when: item.installed == True
+  notify: drush clear-cache
 
 - name: Create a Symbolic Link for the Kabocha Theme
   ansible.builtin.file:
