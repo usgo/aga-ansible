@@ -27,4 +27,4 @@ usgo_drupal_files_link_path: "{{ usgo_drupal_files_dir }}"
 usgo_drupal_current_theme_link_path: "{{ usgo_drupal_themes_dir }}/kabocha"
 
 # USGO Github Authentication
-usgo_github_token: ''
+usgo_github_access_token: ''

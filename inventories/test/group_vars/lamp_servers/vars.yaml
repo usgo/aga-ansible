@@ -1,6 +1,9 @@
 ---
 certbot_admin_email: webmaster@usgo.org
 
+# Github Access Token
+usgo_github_access_token: "{{ vault_github_access_token }}"
+
 # Drupal Database Configuration
 usgo_drupal_database_name: "{{ vault_drupal_database_name }}"
 usgo_drupal_database_prefix: "{{ vault_drupal_database_prefix }}"
