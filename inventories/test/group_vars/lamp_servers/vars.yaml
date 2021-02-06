@@ -1,5 +1,13 @@
 ---
 certbot_admin_email: webmaster@usgo.org
+
+# Drupal Database Configuration
+usgo_drupal_database: "{{ vault_drupal_database }}"
+usgo_drupal_database_prefix: "{{ vault_drupal_database_prefix }}"
+usgo_drupal_mysql_user: "{{ vault_drupal_mysql_user }}"
+usgo_drupal_mysql_pass: "{{ vault_drupal_mysql_pass }}"
+
+## AGAGD Environment
 agagd_db_user: agagd_db_ro_usr 
 agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
