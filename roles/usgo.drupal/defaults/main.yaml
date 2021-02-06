@@ -6,21 +6,23 @@ usgo_drupal_database_prefix: ''
 usgo_drupal_database_host: 'localhost'
 usgo_drupal_database_user: ''
 usgo_drupal_database_pass: ''
+usgo_drupal_salt: ''
 
 # Versioning
 # Default is set to the current version on the site as of Feb 6, 2021.
 usgo_drupal_version: '7.72'
 
 # USGO Drupal Directories
-usgo_drupal_project_dir: "{{ web_root }}/drupal"
-usgo_drupal_default_sites_dir: "{{ usgo_drupal_project_dir }}/sites/default"
+web_root: '/var/www/usgo.org'
+usgo_drupal_dir: "{{ web_root }}/drupal"
+usgo_drupal_default_sites_dir: "{{ usgo_drupal_dir }}/sites/default"
 usgo_drupal_files_dir: "{{ usgo_drupal_default_sites_dir }}/files"
-usgo_drupal_modules_dir: "{{ usgo_drupal_project_dir }}/sites/all/modules"
-usgo_drupal_themes_dir: "{{ usgo_drupal_project_dir }}/sites/all/themes"
+usgo_drupal_modules_dir: "{{ usgo_drupal_dir }}/sites/all/modules"
+usgo_drupal_themes_dir: "{{ usgo_drupal_dir }}/sites/all/themes"
 
 # USGO Drupal Theme Information
 usgo_drupal_theme_name: "kabocha"
-usgo_drupal_current_theme_location: "{{ usgo_drupal_project_dir }}/theme"
+usgo_drupal_current_theme_location: "{{ usgo_drupal_dir }}/theme"
 
 # USGO Drupal Link Paths
 usgo_drupal_files_link_path: "{{ usgo_drupal_files_dir }}"
