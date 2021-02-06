@@ -10,3 +10,6 @@
 
 # Create templates for Apache2 vhosts
 - import_tasks: create_basic_vhost.yaml 
+
+# Create templates for Apache2 ssl vhosts
+- import_tasks: create_ssl_vhost.yaml

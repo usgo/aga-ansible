@@ -1,0 +1,5 @@
+---
+- name: drush clear-cache
+  ansible.builtin.shell:
+    cmd: drush cc all
+    chdir: "{{ usgo_drupal_dir }}"

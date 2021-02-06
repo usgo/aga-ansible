@@ -35,33 +35,3 @@
   with_items: "{{ vhost }}"
   when: vhost is defined
 
-- name: Check if certificate already exists.
-  stat:
-    path: /etc/letsencrypt/live/{{ item.ssl_domains | first | replace('*.', '') }}/cert.pem
-  register: letsencrypt_cert
-  with_items: "{{ vhost_ssl }}"
-
-- name: Generate new certificate if one doesn't exist.
-  command: "certbot certonly --apache --noninteractive --agree-tos --email {{ certbot_admin_email }} -d {{ item.item.ssl_domains | join(',') }}"
-  with_items: "{{ letsencrypt_cert.results }}"
-  notify: restart apache
-  when: not item.stat.exists
-
-- name: Import a basic apache2 ssl virtual host template
-  template:
-    src: vhost_ssl.conf.j2
-    dest: "/etc/apache2/sites-available/{{ item.servername }}-ssl.conf"
-  notify:
-    - restart apache
-  with_items: "{{ vhost_ssl }}"
-  when: vhost_ssl is defined
-
-- name: Add vhost_ssl symlink in sites-enabled.
-  file:
-    src: "/etc/apache2/sites-available/{{ item.servername }}-ssl.conf"
-    dest: "/etc/apache2/sites-enabled/{{ item.servername }}-ssl.conf"
-    state: link
-  notify: 
-    - restart apache
-  with_items: "{{ vhost_ssl }}"
-  when: vhost_ssl is defined

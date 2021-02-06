@@ -1,0 +1,5 @@
+---
+# Default Directories
+webroot: '/var/www/usgo.org'
+repo_dir: "{{ webroot }}/repos"
+live_dir: "{{ webroot }}/live"
