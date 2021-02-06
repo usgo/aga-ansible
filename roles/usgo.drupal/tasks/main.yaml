@@ -1,29 +1,12 @@
 ---
-- name: Get the JSON Response from Github's API for USGO's Custom Drupal Modules
-  uri:
-    src: "https://api.github.com/?access_token={{ usgo_github_token }}"
-    return_content: true
-  register: usgos_custom_modules_json_response
-
-- name: Download USGO's Custom Drupal Modules
-  unarchive:
-    src: "{{ usgos_custom_modules_json_response.json.tarball_url }}?access_token={{ usgo_github_token }}"
-    dest: "{{ usgo_drupal_dir }}"
+- name: Create Drupal Install Dir
+  file:
+    path: "{{ usgo_drupal_dir }}"
     owner: root
     group: www-data
-    mode: '0655'
-    remote_src: yes
-
-- name: Get Drupal Modules
-  unarchive: 
-    src: "https://ftp.drupal.org/files/projects/{{ item.name }}-{{ item.version }}.tar.gz"
-    dest: "{{ usgo_drupal_modules_dir }}"
-    owner: root
-    group: www-data
-    mode: '0655'
-    remote_src: yes
-  with_items: "{{ usgo_drupal_modules }}"
-  when: item.installed == True
+    mode: 0655
+    recurse: yes
+    state: directory
 
 - name: Get Latest Drupal 7 Version
   unarchive:
@@ -33,3 +16,49 @@
     group: www-data
     mode: '0655'
     remote_src: yes
+    extra_opts: [--strip-components=1]
+
+- name: Copy a the settings.php for Drupal 7 Version
+  ansible.builtin.template:
+    src: default.settings.php.j2
+    dest: "{{ usgo_drupal_default_sites_dir }}/settings.php" 
+    owner: root
+    group: www-data
+    mode: 0640
+
+- name: Get the JSON Response from Github's API for USGO's Custom Drupal Modules
+  uri:
+    url: "https://api.github.com/repos/usgo/usgo_drupal_custom_modules?access_token={{ usgo_github_access_token }}"
+    return_content: true
+  register: usgos_custom_modules_json_response
+
+- name: Create Custom and Community Directories
+  file:
+    path: "{{ usgo_drupal_modules_dir }}/{{ item }}"
+    owner: root
+    group: www-data
+    mode: 0655
+    recurse: yes
+    state: directory
+  with_items: ['custom', 'community']
+
+- name: Download USGO's Custom Drupal Modules
+  unarchive:
+    src: "{{ usgos_custom_modules_json_response.json.url }}/tarball/master?access_token={{ usgo_github_access_token }}"
+    dest: "{{ usgo_drupal_modules_dir }}/custom"
+    owner: root
+    group: www-data
+    mode: '0655'
+    remote_src: yes
+    extra_opts: [--strip-components=1]
+
+- name: Get Drupal Modules
+  unarchive: 
+    src: "https://ftp.drupal.org/files/projects/{{ item.name }}-{{ item.version }}.tar.gz"
+    dest: "{{ usgo_drupal_modules_dir }}/community"
+    owner: root
+    group: www-data
+    mode: '0655'
+    remote_src: yes
+  with_items: "{{ usgo_drupal_modules }}"
+  when: item.installed == True
