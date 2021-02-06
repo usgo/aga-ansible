@@ -22,7 +22,8 @@ usgo_drupal_themes_dir: "{{ usgo_drupal_dir }}/sites/all/themes"
 
 # USGO Drupal Theme Information
 usgo_drupal_theme_name: "kabocha"
-usgo_drupal_current_theme_location: "{{ usgo_drupal_dir }}/theme"
+usgo_drupal_current_theme_location: "{{ web_root }}/theme"
+usgo_drupal_current_files_location: "/usgo_org_pulls/drupal"
 
 # USGO Drupal Link Paths
 usgo_drupal_files_link_path: "{{ usgo_drupal_files_dir }}"
