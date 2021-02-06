@@ -7,7 +7,7 @@ usgo_drupal_mysql_pass: ''
 # USGO Drupal Directories
 usgo_drupal_project_dir: "{{ web_root }}/drupal"
 usgo_drupal_default_sites_dir: "{{ usgo_drupal_project_dir }}/sites/default"
-usgo_drupal_default_files_dir: "{{ usgo_drupal_default_sites_dir }}/files"
+usgo_drupal_files_dir: "{{ usgo_drupal_default_sites_dir }}/files"
 usgo_drupal_modules_dir: "{{ usgo_drupal_project_dir }}/sites/all/modules"
 usgo_drupal_themes_dir: "{{ usgo_drupal_project_dir }}/sites/all/themes"
 
@@ -16,7 +16,7 @@ usgo_drupal_theme_name: "kabocha"
 usgo_drupal_current_theme_location: "{{ usgo_drupal_project_dir }}/theme"
 
 # USGO Drupal Link Paths
-usgo_drupal_files_link_path: "{{ usgo_drupal_files }}"
+usgo_drupal_files_link_path: "{{ usgo_drupal_files_dir }}"
 usgo_drupal_current_theme_link_path: "{{ usgo_drupal_themes_dir }}/kabocha"
 
 # USGO Github Authentication
