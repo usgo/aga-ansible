@@ -29,8 +29,10 @@
       apt:
         update_cache: yes
         cache_valid_time: 3600
-    - include_role: 
+    - import_role:
         name: web
+      tags:
+        - usgo.web
     - import_role:
         name: mysql
       tags:
