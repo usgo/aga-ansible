@@ -62,3 +62,12 @@
     remote_src: yes
   with_items: "{{ usgo_drupal_modules }}"
   when: item.installed == True
+
+- name: Create a Symbolic Link for the Kabocha Theme
+  ansible.builtin.file:
+    src: "{{ usgo_drupal_current_theme_location }}"
+    dest: "{{ usgo_drupal_themes_dir }}/kabocha"
+    owner: root
+    group: www-data
+    mode: '0655'
+    state: link
