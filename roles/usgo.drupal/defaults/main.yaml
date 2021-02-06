@@ -4,6 +4,10 @@ usgo_drupal_database: ''
 usgo_drupal_mysql_user: ''
 usgo_drupal_mysql_pass: ''
 
+# Versioning
+# Default is set to the current version on the site as of Feb 6, 2021.
+usgo_drupal_version: '7.72'
+
 # USGO Drupal Directories
 usgo_drupal_project_dir: "{{ web_root }}/drupal"
 usgo_drupal_default_sites_dir: "{{ usgo_drupal_project_dir }}/sites/default"
