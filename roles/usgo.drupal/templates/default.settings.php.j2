@@ -283,9 +283,8 @@ $update_free_access = FALSE;
  *   $drupal_hash_salt = file_get_contents('/home/example/salt.txt');
  *
  */
-$drupal_hash_salt = (file_exists("{{ usgo_drupal_salt_file }}") ? 
-                        file_get_contents("{{ usgo_drupal_salt_file }}") : 
-                        "{{ usgo_drupal_salt_file }}");
+# ToDo: Rewrite Salt File
+$drupal_hash_salt = "{{ usgo_drupal_salt }}";
 
 /**
  * Base URL (optional).
