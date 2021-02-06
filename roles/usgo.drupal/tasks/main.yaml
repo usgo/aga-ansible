@@ -5,7 +5,6 @@
     owner: root
     group: www-data
     mode: 0655
-    recurse: yes
     state: directory
 
 - name: Get Latest Drupal 7 Version
@@ -67,6 +66,15 @@
   ansible.builtin.file:
     src: "{{ usgo_drupal_current_theme_location }}"
     dest: "{{ usgo_drupal_themes_dir }}/kabocha"
+    owner: root
+    group: www-data
+    mode: '0655'
+    state: link
+
+- name: Create a Symbolic Link for the Files Directory
+  ansible.builtin.file:
+    src: "{{ usgo_drupal_current_files_location }}"
+    dest: "{{ usgo_drupal_files_link_path }}"
     owner: root
     group: www-data
     mode: '0655'
