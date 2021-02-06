@@ -8,10 +8,10 @@ agagd_google_analytics_tracking_id: "{{ vault_agagd_google_analytics_tracking_id
 
 # Current Production AGAGD Version
 # - Date: Oct. 27, 2020
-agagd_version: '2020.10.27-alpha'
+agagd_version: '2021.02.06'
 
 # Current Production Membership Manager Version
-usgo_membership_manager_version: '2020.12.14'
+usgo_membership_manager_version: '2021.02.06'
 
 ## Membership Manager Environment
 mm_admin_debug_mode: 'false'

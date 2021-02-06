@@ -108,7 +108,7 @@ vhost:
 * `shell> ansible-playbook -u [username] -K -i [inventory] [playbook.yaml] --limit='[host1,host2]'`
 
 ## Ansible Usage Add Devops User to New Server
-* `shell>  ansible-playbook -K -i [inventory] [playbook.yaml] --tags='usgo.devops_user' --limit [hostname]`
+* `shell> ansible [hosts_group] -i 'inventories/production' --vault-password-file=.prod_vault_pass -u [username] -K -b -m include_role -a name=usgo.devops_user`
 
 ## Ansible Vault Usage
 * `shell> ansible-playbook --ask-vault-pass -u [username] -K -i [inventory] [playbook.yaml]`
