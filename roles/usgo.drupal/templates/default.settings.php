@@ -245,12 +245,12 @@
  * @endcode
  */
 $databases['default']['default'] = array(
-    'driver' => "{{ usgo_drupal_db_driver }}",
-    'database' => "{{ usgo_drupal_db_name }}",
-    'username' => "{{ usgo_drupal_db_user }}",
-    'password' => "{{ usgo_drupal_db_pass }}",
-    'host' => "{{ usgo_drupal_db_host }}",
-    'prefix' => "{{ usgo_drupal_db_prefix }}",
+    'driver' => "{{ usgo_drupal_database_driver }}",
+    'database' => "{{ usgo_drupal_database_name }}",
+    'username' => "{{ usgo_drupal_database_user }}",
+    'password' => "{{ usgo_drupal_database_pass }}",
+    'host' => "{{ usgo_drupal_database_host }}",
+    'prefix' => "{{ usgo_drupal_database_prefix }}",
 );
 
 /**

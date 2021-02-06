@@ -1,8 +1,11 @@
 ---
 # Database Configuration
-usgo_drupal_database: ''
-usgo_drupal_mysql_user: ''
-usgo_drupal_mysql_pass: ''
+usgo_drupal_database_driver: 'mysql'
+usgo_drupal_database_name: ''
+usgo_drupal_database_prefix: ''
+usgo_drupal_database_host: 'localhost'
+usgo_drupal_database_user: ''
+usgo_drupal_database_pass: ''
 
 # Versioning
 # Default is set to the current version on the site as of Feb 6, 2021.
