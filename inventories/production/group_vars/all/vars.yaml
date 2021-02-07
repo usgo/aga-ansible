@@ -12,6 +12,9 @@ usgo_drupal_database_user: "{{ vault_drupal_database_user }}"
 usgo_drupal_database_pass: "{{ vault_drupal_database_pass }}"
 usgo_drupal_salt: "{{ vault_drupal_salt }}"
 
+# Drupal Production Version for usgo.org
+usgo_drupal_version: '7.72'
+
 ## AGAGD Environment
 agagd_db_user: agagd_db_ro_usr 
 agagd_db_name: "{{ vault_agagd_db_name }}"
