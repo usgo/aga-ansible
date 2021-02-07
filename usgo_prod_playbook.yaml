@@ -6,12 +6,22 @@
       apt:
         update_cache: yes
         cache_valid_time: 3600
-    - include_role: 
+    - import_role:
         name: web
-    - include_role: 
+      tags:
+        - usgo.web
+    - import_role:
         name: mysql
-    - include_role:
+      tags:
+        - usgo.mysql
+    - import_role:
+        name: usgo.drupal
+      tags:
+        - usgo.drupal
+    - import_role:
         name: usgo.wordpress
+      tags:
+        - usgo.wordpress
     - import_role:
         name: usgo.membership_manager
       tags:
@@ -20,5 +30,7 @@
         name: usgo.agagd
       tags:
         - usgo.agagd
-    - include_role:
+    - import_role:
         name: cron.update.wordpress
+      tags:
+        - usgo.cron.update.wordpress
