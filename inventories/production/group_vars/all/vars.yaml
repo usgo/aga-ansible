@@ -33,7 +33,7 @@ usgo_drupal_modules:
   - { name: 'google_analytics', version: '7.x-2.6', installed: True }
   - { name: 'insert', version: '7.x-1.4', installed: True }
   - { name: 'job_scheduler', version: '7.x-2.0', installed: True }
-  - { name: 'link', version: '7.x-1.5', installed: True }
+  - { name: 'link', version: '7.x-1.7', installed: True }
   - { name: 'markdown', version: '7.x-1.5', installed: True }
   # - { name: 'markdown_abbr', version: '', installed: True }
   - { name: 'media', version: '7.x-2.0-unstable1', installed: True }
