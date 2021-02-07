@@ -12,6 +12,14 @@ usgo_drupal_salt: ''
 # Default is set to the current version on the site as of Feb 6, 2021.
 usgo_drupal_version: '7.72'
 
+# Drupal Modules
+#
+# Format Example:
+#
+# usgo_drupal_modules:
+#   - { name: 'advanced_help', version: '7.x-1.5', installed: True }
+usgo_drupal_modules: []
+
 # USGO Drupal Directories
 web_root: '/var/www/usgo.org'
 usgo_drupal_dir: "{{ web_root }}/drupal"
