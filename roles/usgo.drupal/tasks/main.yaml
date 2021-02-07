@@ -80,5 +80,5 @@
     dest: "{{ usgo_drupal_files_link_path }}"
     owner: root
     group: www-data
-    mode: '0655'
+    mode: '0777'
     state: link
