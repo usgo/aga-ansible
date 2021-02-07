@@ -20,7 +20,7 @@ usgo_drupal_modules:
   - { name: 'advanced_help', version: '7.x-1.7', installed: True }
   - { name: 'calendar', version: '7.x-3.5', installed: True }
   - { name: 'captcha', version: '7.x-1.5', installed: True }
-  - { name: 'ctools', version: '7.x-1.15', installed: True }
+  - { name: 'ctools', version: '7.x-1.19', installed: True }
   - { name: 'date', version: '7.x-2.10', installed: True }
   - { name: 'devel', version: '7.x-1.6', installed: True }
   - { name: 'diff', version: '7.x-3.4', installed: True }
