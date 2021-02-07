@@ -15,6 +15,10 @@
       tags:
         - usgo.mysql
     - import_role:
+        name: usgo.drupal
+      tags:
+        - usgo.drupal
+    - import_role:
         name: usgo.wordpress
       tags:
         - usgo.wordpress
