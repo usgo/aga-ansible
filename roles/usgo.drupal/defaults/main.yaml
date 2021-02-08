@@ -10,6 +10,8 @@ usgo_drupal_salt: ''
 
 # Additional Drupal Settings
 usgo_cookie_domain: ''
+usgo_drupal_charset: 'utf8mb4'
+usgo_drupal_collation: 'utf8mb4_general_ci'
 
 # Versioning
 # Default is set to the current version on the site as of Feb 6, 2021.
