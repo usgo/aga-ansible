@@ -43,7 +43,7 @@ usgo_drupal_modules:
   - { name: 'pathauto', version: '7.x-1.3', installed: True }
   - { name: 'recaptcha', version: '7.x-2.3', installed: True }
   - { name: 'redirect', version: '7.x-1.0-rc3', installed: True }
-  - { name: 'rules', version: '7.x-2.11', installed: True }
+  - { name: 'rules', version: '7.x-2.12', installed: True }
   - { name: 'token', version: '7.x-1.7', installed: True }
   - { name: 'variable', version: '7.x-2.5', installed: True }
   - { name: 'video', version: '7.x-1.0-alpha2', installed: True }
