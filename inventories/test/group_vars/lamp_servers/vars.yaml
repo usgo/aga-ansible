@@ -42,7 +42,7 @@ usgo_drupal_modules:
   - { name: 'media', version: '7.x-2.0-unstable1', installed: True }
   - { name: 'menu_block', version: '7.x-2.8', installed: True }
   - { name: 'module_filter', version: '7.x-2.2', installed: True }
-  - { name: 'panels', version: '7.x-3.9', installed: True } # Unused Module
+  - { name: 'panels', version: '7.x-3.10', installed: True } # Unused Module
   - { name: 'pathauto', version: '7.x-1.3', installed: True }
   - { name: 'recaptcha', version: '7.x-2.3', installed: True }
   - { name: 'redirect', version: '7.x-1.0-rc3', installed: True }
