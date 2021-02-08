@@ -8,6 +8,9 @@ usgo_drupal_database_user: ''
 usgo_drupal_database_pass: ''
 usgo_drupal_salt: ''
 
+# Additional Drupal Settings
+usgo_cookie_domain: ''
+
 # Versioning
 # Default is set to the current version on the site as of Feb 6, 2021.
 usgo_drupal_version: '7.72'
