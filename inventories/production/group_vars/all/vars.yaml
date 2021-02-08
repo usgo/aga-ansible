@@ -27,7 +27,7 @@ usgo_drupal_modules:
   - { name: 'drafty', version: '7.x-1.0-rc1', installed: True }
   - { name: 'entity', version: '7.x-1.9', installed: True }
   - { name: 'features', version: '7.x-2.13', installed: True }
-  - { name: 'feeds', version: '7.x-2.0-beta4', installed: True }
+  - { name: 'feeds', version: '7.x-2.0-beta5', installed: True }
   - { name: 'file_entity', version: '7.x-1.x-dev', installed: True }
   - { name: 'find_content', version: '7.x-1.7', installed: True }
   - { name: 'google_analytics', version: '7.x-2.6', installed: True }
