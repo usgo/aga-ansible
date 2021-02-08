@@ -15,6 +15,42 @@ usgo_drupal_salt: "{{ vault_drupal_salt }}"
 # Drupal Production Version for usgo.org
 usgo_drupal_version: '7.78'
 
+# Drupal Production Modules for usgo.org
+usgo_drupal_modules:
+  - { name: 'advanced_help', version: '7.x-1.6', installed: True }
+  - { name: 'calendar', version: '7.x-3.6', installed: True }
+  - { name: 'captcha', version: '7.x-1.7', installed: True }
+  - { name: 'ctools', version: '7.x-1.19', installed: True }
+  - { name: 'date', version: '7.x-2.10', installed: True }
+  - { name: 'devel', version: '7.x-1.6', installed: True }
+  - { name: 'diff', version: '7.x-3.4', installed: True }
+  - { name: 'drafty', version: '7.x-1.0-rc1', installed: True }
+  - { name: 'entity', version: '7.x-1.9', installed: True }
+  - { name: 'features', version: '7.x-2.13', installed: True }
+  - { name: 'feeds', version: '7.x-2.0-beta5', installed: True }
+  - { name: 'file_entity', version: '7.x-1.x-dev', installed: True }
+  - { name: 'find_content', version: '7.x-1.7', installed: True }
+  - { name: 'google_analytics', version: '7.x-2.6', installed: True }
+  - { name: 'insert', version: '7.x-1.4', installed: True }
+  - { name: 'job_scheduler', version: '7.x-2.0', installed: True }
+  - { name: 'link', version: '7.x-1.7', installed: True }
+  - { name: 'markdown', version: '7.x-1.6', installed: True }
+  # - { name: 'markdown_abbr', version: '', installed: True }
+  - { name: 'media', version: '7.x-2.0-unstable1', installed: True }
+  - { name: 'menu_block', version: '7.x-2.8', installed: True }
+  - { name: 'module_filter', version: '7.x-2.2', installed: True }
+  - { name: 'panels', version: '7.x-3.9', installed: True } # Unused Module
+  - { name: 'pathauto', version: '7.x-1.3', installed: True }
+  - { name: 'recaptcha', version: '7.x-2.3', installed: True }
+  - { name: 'redirect', version: '7.x-1.0-rc3', installed: True }
+  - { name: 'rules', version: '7.x-2.12', installed: True }
+  - { name: 'token', version: '7.x-1.7', installed: True }
+  - { name: 'variable', version: '7.x-2.5', installed: True }
+  - { name: 'video', version: '7.x-1.0-alpha2', installed: True }
+  - { name: 'views', version: '7.x-3.24', installed: True }
+  - { name: 'workbench', version: '7.x-1.2', installed: True }
+  - { name: 'workbench_moderation', version: '7.x-3.0', installed: True }
+
 ## AGAGD Environment
 agagd_db_user: agagd_db_ro_usr 
 agagd_db_name: "{{ vault_agagd_db_name }}"

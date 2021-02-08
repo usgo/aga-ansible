@@ -43,8 +43,10 @@
         name: usgo.drupal
       tags:
         - usgo.drupal
-    - include_role:
+    - import_role:
         name: usgo.wordpress
+      tags:
+        - usgo.wordpress
     - import_role:
         name: usgo.membership_manager
       tags:
