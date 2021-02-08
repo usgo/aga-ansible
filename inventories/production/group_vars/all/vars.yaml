@@ -47,7 +47,7 @@ usgo_drupal_modules:
   - { name: 'token', version: '7.x-1.7', installed: True }
   - { name: 'variable', version: '7.x-2.5', installed: True }
   - { name: 'video', version: '7.x-1.0-alpha2', installed: True }
-  - { name: 'views', version: '7.x-3.23', installed: True }
+  - { name: 'views', version: '7.x-3.24', installed: True }
   - { name: 'workbench', version: '7.x-1.2', installed: True }
   - { name: 'workbench_moderation', version: '7.x-3.0', installed: True }
 
