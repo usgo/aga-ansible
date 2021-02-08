@@ -4,6 +4,14 @@
     name: "{{ item }}"
   with_items: "{{ wordpress_php_packages }}"
 
+- name: Creating the Root Directory for Wordpress
+  ansible.builtin.file:
+    path: "{{ wordpress_root }}"
+    state: directory
+    mode: '0655'
+    owner: root
+    group: www-data
+
 - name: Download and Unarchive the Latest Wordpress
   unarchive:
     src: 'https://wordpress.org/latest.tar.gz'
