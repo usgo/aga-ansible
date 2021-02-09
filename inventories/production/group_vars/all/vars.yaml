@@ -53,6 +53,7 @@ usgo_drupal_modules:
   - { name: 'views', version: '7.x-3.24', installed: True }
   - { name: 'workbench', version: '7.x-1.2', installed: True }
   - { name: 'workbench_moderation', version: '7.x-3.0', installed: True }
+  - { name: 'node_view_permissions', version: '7.x-1.6', installed: True }
 
 ## AGAGD Environment
 agagd_db_user: agagd_db_ro_usr 
