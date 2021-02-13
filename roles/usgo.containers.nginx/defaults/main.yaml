@@ -1,0 +1,4 @@
+---
+usgo_nginx_certbot_email: ''
+usgo_nginx_frontend_network_name: ''
+usgo_nginx_frontend_apps: []
