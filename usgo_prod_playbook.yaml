@@ -1,6 +1,28 @@
 ---
+- hosts: frontend_servers
+  tasks:
+    - name: Append the docker group to the usgo_devops user
+      ansible.builtin.user:
+        name: usgo_devops
+        groups: docker
+      tags:
+        - usgo.containers
+    - import_role:
+        name: usgo.containers
+      tags:
+        - usgo.containers
+    - import_role:
+        name: usgo.containers.nginx
+      tags:
+        - usgo.containers
+        - usgo.containers.agagd
+    - import_role:
+        name: usgo.containers.agagd
+      tags:
+        - usgo.containers
+        - usgo.containers.agagd
+
 - hosts: lamp_servers
-  become: yes
   tasks:
     - name: "Updating cache the test lamp servers if not updated in last hour"
       apt:
