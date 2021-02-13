@@ -10,8 +10,14 @@
 - hosts: frontend_servers
   tasks:
     - import_role:
+        name: usgo.containers.nginx
+      tags:
+        - usgo.containers
+        - usgo.containers.agagd
+    - import_role:
         name: usgo.containers.agagd
       tags:
+        - usgo.containers
         - usgo.containers.agagd
 
 - hosts: lamp_servers
