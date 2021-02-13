@@ -16,9 +16,10 @@
   community.general.docker_container:
     name: nginx-proxy
     image: jrcs/letsencrypt-nginx-proxy-companion
-    volumes_from: nginx-proxy
+    volumes_from:
+      - nginx-proxy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/acme.sh
-    environment:
+    env:
       DEFAULT_EMAIL: "{{ usgo_nginx_certbot_email }}"

@@ -3,7 +3,7 @@
   community.general.docker_container:
     name: agagd
     image: "usgo/agagd:{{ usgo_container_agagd_version }}"
-    environment:
+    env:
       VIRTUAL_HOST: "{{ usgo_container_agagd_virtual_host }}"
       LETSENCRYPT_HOST: "{{ usgo_container_agagd_letsencrypt_host }}"
       DB_HOST: "{{ usgo_container_agagd_db_host }}"
