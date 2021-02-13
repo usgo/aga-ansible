@@ -1,0 +1,24 @@
+---
+- name: Create a directory for the nginx-proxy docker-compose files
+  ansible.builtin.file:
+    path: "{{ usgo_docker_compose_nginx_directory }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Create a directory for the apps docker-compose files
+  ansible.builtin.file:
+    path: "{{ usgo_docker_compose_apps_directory }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Add the configuration for the nignx-proxy
+  ansible.builtin.file:
+    src: 'docker-compose-nginx.yaml.j2'
+    dest: "{{ usgo_docker_compose_nginx_directory }}/docker-compose-nginx.yaml"
+    owner: root
+    group: root
+    mode: '0755'
