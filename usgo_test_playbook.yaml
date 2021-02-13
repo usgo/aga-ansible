@@ -1,6 +1,10 @@
 ---
 - hosts: frontend_servers
   tasks:
+    - name: Append the docker group to the usgo_devops user
+      ansible.builtin.user:
+        name: usgo_devops
+        groups: docker
     - import_role:
         name: usgo.containers
       tags:
