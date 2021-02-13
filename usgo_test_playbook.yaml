@@ -1,12 +1,4 @@
 ---
-- hosts: all
-  become: yes
-  tasks:
-    - import_role:
-        name: usgo.devops_user
-      tags:
-        - usgo.devops_user
-
 - hosts: frontend_servers
   tasks:
     - import_role:
