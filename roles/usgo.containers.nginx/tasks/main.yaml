@@ -22,3 +22,9 @@
     owner: root
     group: root
     mode: '0755'
+
+- name: Deploy the nginx-proxy with letsencrypt
+  docker_compose:
+    project_src: "{{ usgo_docker_compose_nginx_directory }}"
+    files:
+      - 'docker-compose-nginx.yaml.j2'
