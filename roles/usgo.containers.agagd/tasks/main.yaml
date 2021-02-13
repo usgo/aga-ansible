@@ -4,9 +4,11 @@
     name: agagd
     state: started
     image: "usgo/agagd:{{ usgo_container_agagd_version }}"
+    exposed_ports: "{{ usgo_container_agagd_virtual_port }}"
     env:
       VIRTUAL_HOST: "{{ usgo_container_agagd_virtual_host }}"
       LETSENCRYPT_HOST: "{{ usgo_container_agagd_letsencrypt_host }}"
+      VIRTUAL_PORT: "{{ usgo_container_agagd_virtual_port }}"
       DB_HOST: "{{ usgo_container_agagd_db_host }}"
       DB_PORT: "{{ usgo_container_agagd_db_port }}"
       APP_DB_NAME: "{{ usgo_container_agagd_db_name }}"
