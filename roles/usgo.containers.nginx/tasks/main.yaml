@@ -2,20 +2,22 @@
 - name: Create the nginx-proxy docker container
   community.general.docker_container:
     name: nginx-proxy
-    image: jwilder/nginx-proxy
+    state: started
+    image: jwilder/nginx-proxy:latest
     ports:
       - 80:80
       - 443:443
     volumes:
       - certs:/etc/nginx/certs
-      - vhosts/etc/nginx/vhost.d
+      - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
 - name: Create the nginx-proxy docker container
   community.general.docker_container:
-    name: nginx-proxy
-    image: jrcs/letsencrypt-nginx-proxy-companion
+    name: nginx-proxy-companion
+    state: started
+    image: jrcs/letsencrypt-nginx-proxy-companion:latest
     volumes_from:
       - nginx-proxy
     volumes:

@@ -2,6 +2,7 @@
 - name: Create the an AGAGD Application in Docker
   community.general.docker_container:
     name: agagd
+    state: started
     image: "usgo/agagd:{{ usgo_container_agagd_version }}"
     env:
       VIRTUAL_HOST: "{{ usgo_container_agagd_virtual_host }}"
