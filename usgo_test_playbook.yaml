@@ -2,6 +2,10 @@
 - hosts: frontend_servers
   tasks:
     - import_role:
+        name: usgo.containers
+      tags:
+        - usgo.containers
+    - import_role:
         name: usgo.containers.nginx
       tags:
         - usgo.containers
