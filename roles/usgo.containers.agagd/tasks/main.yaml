@@ -3,6 +3,8 @@
   community.general.docker_container:
     name: agagd
     state: started
+    pull: yes
+    recreate: yes
     image: "usgo/agagd:{{ usgo_container_agagd_version }}"
     exposed_ports: "{{ usgo_container_agagd_virtual_port }}"
     env:
