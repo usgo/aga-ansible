@@ -4,17 +4,11 @@
 
 Variable | Default Value
 ---|---
-usgo_container_agagd_version | 'latest'
-usgo_container_agagd_container_name | 'agagd'
-usgo_container_agagd_virtual_host | ''
-usgo_container_agagd_letsencrypt_host | ''
-usgo_container_agagd_virtual_port | '3031'
-usgo_container_agagd_db_host | ''
-usgo_container_agagd_db_port | ''
-usgo_container_agagd_db_name | ''
-usgo_container_agagd_db_user | ''
-usgo_container_agagd_db_password | ''
-usgo_container_agagd_secret_key | ''
+usgo_nginx_certbot_email | ''
+usgo_nginx_frontend_network_name | ''
+usgo_nginx_frontend_apps | []
+usgo_docker_compose_nginx_directory | '/etc/docker-nginx-proxy'
+usgo_docker_compose_apps_directory | '/etc/docker-nginx-apps'
 
 ### Images
 
