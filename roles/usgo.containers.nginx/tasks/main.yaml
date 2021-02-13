@@ -1,30 +1,24 @@
 ---
-- name: Create a directory for the nginx-proxy docker-compose files
-  ansible.builtin.file:
-    path: "{{ usgo_docker_compose_nginx_directory }}"
-    state: directory
-    owner: root
-    group: root
-    mode: '0755'
+- name: Create the nginx-proxy docker container
+  community.general.docker_container:
+    name: nginx-proxy
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - certs:/etc/nginx/certs
+      - vhosts/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
 
-- name: Create a directory for the apps docker-compose files
-  ansible.builtin.file:
-    path: "{{ usgo_docker_compose_apps_directory }}"
-    state: directory
-    owner: root
-    group: root
-    mode: '0755'
-
-- name: Add the configuration for the nignx-proxy
-  ansible.builtin.file:
-    src: 'docker-compose-nginx.yaml.j2'
-    dest: "{{ usgo_docker_compose_nginx_directory }}/docker-compose-nginx.yaml"
-    owner: root
-    group: root
-    mode: '0755'
-
-- name: Deploy the nginx-proxy with letsencrypt
-  docker_compose:
-    project_src: "{{ usgo_docker_compose_nginx_directory }}"
-    files:
-      - 'docker-compose-nginx.yaml.j2'
+- name: Create the nginx-proxy docker container
+  community.general.docker_container:
+    name: nginx-proxy
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes_from: nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/acme.sh
+    environment:
+      DEFAULT_EMAIL: "{{ usgo_nginx_certbot_email }}"
