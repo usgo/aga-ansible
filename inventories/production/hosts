@@ -1,2 +1,5 @@
 [lamp_servers]
 23.239.21.46
+
+[frontend_servers]
+usgo_frontend ansible_host=45.33.52.184

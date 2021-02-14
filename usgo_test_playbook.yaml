@@ -1,27 +1,4 @@
 ---
-- hosts: all
-  become: yes
-  tasks:
-    - import_role:
-        name: usgo.devops_user
-      tags:
-        - usgo.devops_user
-
-- hosts: frontend_servers
-  tasks:
-    - import_role:
-        name: web
-      tags:
-        - usgo.web2
-    - import_role:
-        name: usgo.agagd
-      tags:
-        - usgo.agagd2
-    - import_role:
-        name: usgo.membership_manager
-      tags:
-        - usgo.membership2
-
 - hosts: lamp_servers
   become: yes
   tasks:

@@ -1,0 +1,21 @@
+---
+- name: Create the an AGAGD Application in Docker
+  community.general.docker_container:
+    name: "{{ usgo_container_agagd_container_name }}"
+    state: started
+    pull: yes
+    recreate: yes
+    image: "usgo/agagd:{{ usgo_container_agagd_version }}"
+    exposed_ports: "{{ usgo_container_agagd_virtual_port }}"
+    env:
+      VIRTUAL_HOST: "{{ usgo_container_agagd_virtual_host }}"
+      LETSENCRYPT_HOST: "{{ usgo_container_agagd_letsencrypt_host }}"
+      VIRTUAL_PORT: "{{ usgo_container_agagd_virtual_port }}"
+      DB_HOST: "{{ usgo_container_agagd_db_host }}"
+      DB_PORT: "{{ usgo_container_agagd_db_port }}"
+      APP_DB_NAME: "{{ usgo_container_agagd_db_name }}"
+      AGAGD_USER: "{{ usgo_container_agagd_db_user }}"
+      MYSQL_PASSWORD: "{{ usgo_container_agagd_db_password }}"
+      SECRET_KEY: "{{ usgo_container_agagd_secret_key }}"
+      DEBUG: 'false'
+      LOAD_FIXTURES: 'false'

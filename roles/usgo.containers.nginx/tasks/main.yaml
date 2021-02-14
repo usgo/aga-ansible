@@ -1,0 +1,27 @@
+---
+- name: Create the nginx-proxy docker container
+  community.general.docker_container:
+    name: nginx-proxy
+    state: started
+    image: jwilder/nginx-proxy:latest
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - certs:/etc/nginx/certs
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+- name: Create the nginx-proxy docker container
+  community.general.docker_container:
+    name: nginx-proxy-companion
+    state: started
+    image: jrcs/letsencrypt-nginx-proxy-companion:latest
+    volumes_from:
+      - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/acme.sh
+    env:
+      DEFAULT_EMAIL: "{{ usgo_nginx_certbot_email }}"
