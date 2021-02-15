@@ -1,8 +1,7 @@
 ---
 usgo_nginx_certbot_email: webmaster@usgo.org
 usgo_container_agagd_version: 'latest'
-usgo_container_agagd_virtual_host: 'a.agagd.usgo.org'
-usgo_container_agagd_letsencrypt_host: 'a.agagd.usgo.org'
+usgo_container_agagd_allowed_hosts: 'agagd.usgo.org'
 usgo_container_agagd_db_host: "{{ vault_agagd_backend_db_host }}"
 usgo_container_agagd_db_port: '3306'
 usgo_container_agagd_db_name: "{{ vault_agagd_db_name }}"

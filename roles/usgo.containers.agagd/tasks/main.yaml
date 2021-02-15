@@ -8,6 +8,7 @@
     image: "usgo/agagd:{{ usgo_container_agagd_version }}"
     exposed_ports: "{{ usgo_container_agagd_virtual_port }}"
     env:
+      ALLOWED_HOSTS: "{{ usgo_container_agagd_allowed_hosts }}"
       VIRTUAL_HOST: "{{ usgo_container_agagd_virtual_host }}"
       LETSENCRYPT_HOST: "{{ usgo_container_agagd_letsencrypt_host }}"
       VIRTUAL_PORT: "{{ usgo_container_agagd_virtual_port }}"
