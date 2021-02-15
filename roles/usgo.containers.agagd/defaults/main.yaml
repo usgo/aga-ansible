@@ -1,8 +1,9 @@
 ---
 usgo_container_agagd_version: 'latest'
 usgo_container_agagd_container_name: 'agagd'
-usgo_container_agagd_virtual_host: ''
-usgo_container_agagd_letsencrypt_host: ''
+usgo_container_agagd_allowed_hosts: ''
+usgo_container_agagd_virtual_host: "{{ usgo_container_agagd_allowed_hosts }}"
+usgo_container_agagd_letsencrypt_host: "{{ usgo_container_agagd_allowed_hosts }}"
 usgo_container_agagd_virtual_port: '3031'
 usgo_container_agagd_db_host: ''
 usgo_container_agagd_db_port: ''

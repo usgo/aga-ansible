@@ -1,0 +1,11 @@
+---
+- name: Remove the agagd.usgo.org site from apache2 sites-enabled
+  file:
+    path: "/etc/apache2/sites-enabled/{{ item }}.conf"
+    state: absent
+  with_items: "{{ agagd_disabled_confs_names }}"
+
+- name: Disable the mod_wsgi module
+  apache2_module:
+    state: absent
+    name: wsgi
