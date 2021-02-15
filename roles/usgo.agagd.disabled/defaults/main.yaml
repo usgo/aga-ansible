@@ -1,0 +1,4 @@
+---
+agagd_disabled_confs_names:
+  - agagd.usgo.org-ssl
+  - agagd.usgo.org
