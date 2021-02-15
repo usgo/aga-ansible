@@ -3,7 +3,7 @@
   file:
     path: "/etc/apache2/sites-enabled/{{ item }}.conf"
     state: absent
-  with_items: agagd_disabled_confs_names
+  with_items: "{{ agagd_disabled_confs_names }}"
 
 - name: Disable the mod_wsgi module
   apache2_module:
