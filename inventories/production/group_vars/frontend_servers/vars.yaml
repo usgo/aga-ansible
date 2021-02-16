@@ -1,5 +1,6 @@
 ---
 usgo_nginx_certbot_email: webmaster@usgo.org
+usgo_agagd_min_containers: 5
 usgo_container_agagd_version: '2021.02.14'
 usgo_container_agagd_allowed_hosts: 'agagd.usgo.org'
 usgo_container_agagd_db_host: "{{ vault_agagd_backend_db_host }}"
