@@ -5,6 +5,7 @@
     state: started
     pull: yes
     recreate: yes
+    restart_policy: always
     image: "usgo/agagd:{{ usgo_container_agagd_version }}"
     exposed_ports: "{{ usgo_container_agagd_virtual_port }}"
     env:

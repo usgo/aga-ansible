@@ -3,6 +3,7 @@
   community.general.docker_container:
     name: nginx-proxy
     state: started
+    restart_policy: always
     image: jwilder/nginx-proxy:latest
     ports:
       - 80:80
@@ -17,6 +18,7 @@
   community.general.docker_container:
     name: nginx-proxy-companion
     state: started
+    restart_policy: always
     image: jrcs/letsencrypt-nginx-proxy-companion:latest
     volumes_from:
       - nginx-proxy
