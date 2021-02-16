@@ -12,6 +12,8 @@
 ## Default Variables
 Variable | Default Value | Notes
 ---|--- |
+usgo_agagd_min_containers | 2 | min number of containers to create
+usgo_agagd_last_min_containers | 2 | last min number created in previous run
 usgo_container_agagd_version | 'latest' |
 usgo_container_agagd_container_name | 'agagd' |
 usgo_container_agagd_virtual_host | '' | i.e., agagd.usgo.org

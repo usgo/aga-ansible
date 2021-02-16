@@ -1,7 +1,7 @@
 ---
 - name: Create the an AGAGD Application in Docker
   community.general.docker_container:
-    name: "{{ usgo_container_agagd_container_name }}"
+    name: "{{ usgo_container_agagd_container_name }}-{{ item }}"
     state: started
     pull: yes
     recreate: yes
@@ -21,3 +21,10 @@
       SECRET_KEY: "{{ usgo_container_agagd_secret_key }}"
       DEBUG: 'false'
       LOAD_FIXTURES: 'false'
+  loop: "{{ range(usgo_agagd_min_containers|int)|list }}"
+
+- name: Remove Unused Containers
+  community.general.docker_container:
+    name: "{{ usgo_container_agagd_container_name }}-{{ item }}"
+    state: absent
+  loop: "{{ range(usgo_agagd_min_containers|int, usgo_agagd_last_min_containers|int)|list }}"
