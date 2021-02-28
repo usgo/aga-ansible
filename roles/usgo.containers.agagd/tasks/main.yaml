@@ -13,6 +13,7 @@
       VIRTUAL_HOST: "{{ usgo_container_agagd_virtual_host }}"
       LETSENCRYPT_HOST: "{{ usgo_container_agagd_letsencrypt_host }}"
       VIRTUAL_PORT: "{{ usgo_container_agagd_virtual_port }}"
+      GOOGLE_ANALYTICS_TRACKING_ID: "{{ usgo_agagd_google_analytics_id }}"
       DB_HOST: "{{ usgo_container_agagd_db_host }}"
       DB_PORT: "{{ usgo_container_agagd_db_port }}"
       APP_DB_NAME: "{{ usgo_container_agagd_db_name }}"
