@@ -12,6 +12,7 @@
 ## Default Variables
 Variable | Default Value | Notes
 ---|--- |
+usgo_agagd_google_analytics_id | '' | id for google analytics property
 usgo_agagd_min_containers | 2 | min number of containers to create
 usgo_agagd_last_min_containers | 2 | last min number created in previous run
 usgo_container_agagd_version | 'latest' |
