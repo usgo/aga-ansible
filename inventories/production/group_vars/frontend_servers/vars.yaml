@@ -6,7 +6,7 @@ usgo_agagd_google_analytics_id: "{{ vault_agagd_frontend_google_analytics_id }}"
 
 ## Container Configuration for the AGAGD
 usgo_agagd_min_containers: 5
-usgo_container_agagd_version: '2021.02.18'
+usgo_container_agagd_version: '2021.03.02'
 usgo_container_agagd_allowed_hosts: 'agagd.usgo.org'
 usgo_container_agagd_db_host: "{{ vault_agagd_backend_db_host }}"
 usgo_container_agagd_db_port: '3306'
