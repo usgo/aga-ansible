@@ -1,2 +1,5 @@
 [lamp_servers]
 usgo_test ansible_host=23.92.27.85
+
+[database_servers]
+usgo_test_db ansible_host=45.79.71.158
