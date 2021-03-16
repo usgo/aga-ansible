@@ -23,6 +23,8 @@ associated with certbot and lets encrypt that enable HTTPs on our servers.
 * ansible
 * ssh public key in the `~/.ssh/authorized_keys`
 * `~/.ansible.cfg` configured to allow the local ssh agent to be forwarded i.e.,
+* `roles/requirements.txt` installed
+  * `ansible-galaxy install -r roles/requirements.txt`
 
 ```
 [ssh_connection]
