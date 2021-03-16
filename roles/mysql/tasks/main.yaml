@@ -1,3 +1,10 @@
 ---
-- import_tasks: install_mysql_server.yaml
+- import_tasks: debian_install.yaml
+  when:
+    - ansible_distribution == 'Debian'
+
+- import_tasks: ubuntu_install.yaml
+  when:
+    - ansible_distribution == 'Ubuntu'
+
 - import_tasks: configure_mysql_server.yaml
