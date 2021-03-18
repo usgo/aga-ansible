@@ -1,0 +1,23 @@
+---
+- name: Create the archives file location
+  file:
+    path: "{{ bm_repository_root }}"
+    state: directory
+    user: root
+    group: root
+    mode: '0755'
+
+- name: Install BackupManager
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+    pkg:
+    - backup-manager
+
+- name: Add the config template file
+  template:
+    src: "backup-manager.conf.j2"
+    dest: "/etc/backup-manager.conf"
+    owner: root
+    group: root
+    mode: '0650'
