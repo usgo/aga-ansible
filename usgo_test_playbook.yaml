@@ -53,3 +53,6 @@
           - rule: allow
             from_ip: '192.168.220.231'
             to_port: 3306
+          - rule: allow
+            from_ip: '192.168.141.105'
+            to_port: 3306
