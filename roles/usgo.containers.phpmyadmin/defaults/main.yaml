@@ -1,0 +1,12 @@
+---
+## PHPMyAdmin Container Configuration
+usgo_container_phpmyadmin_version: 'latest'
+usgo_container_phpmyadmin_container_name: 'phpmyadmin'
+usgo_container_phpmyadmin_virtual_host: ''
+usgo_container_phpmyadmin_letsencrypt_host: "{{ usgo_container_phpmyadmin_virtual_host }}"
+usgo_container_phpmyadmin_virtual_port: '80'
+
+## PHPMyAdmin Hosts Configuration
+## Notes: Hosts are comma seperated i.e., host1,host2,etc
+usgo_container_phpmyadmin_hosts: ''
+usgo_container_phpmyadmin_verboses: ''

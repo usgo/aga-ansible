@@ -1,0 +1,16 @@
+---
+- name: Deploy phpmyadmin Application to Docker Host
+  community.general.docker_container:
+    name: "{{ usgo_container_phpmyadmin_container_name }}"
+    state: started
+    pull: yes
+    recreate: yes
+    restart_policy: always
+    image: "phpmyadmin/phpmyadmin:{{ usgo_container_phpmyadmin_version }}"
+    exposed_ports: "{{ usgo_container_phpmyadmin_virtual_port }}"
+    env:
+      VIRTUAL_HOST: "{{ usgo_container_phpmyadmin_virtual_host }}"
+      LETSENCRYPT_HOST: "{{ usgo_container_phpmyadmin_letsencrypt_host }}"
+      VIRTUAL_PORT: "{{ usgo_container_phpmyadmin_virtual_port }}"
+      PMA_HOSTS: "{{ usgo_container_phpmyadmin_hosts }}"
+      PMA_VERBOSES: "{{ usgo_container_phpmyadmin_verboses }}"

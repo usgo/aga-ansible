@@ -21,6 +21,11 @@
       tags:
         - usgo.containers
         - usgo.containers.agagd
+    - import_role:
+        name: usgo.containers.phpmyadmin
+      tags:
+        - usgo.containers
+        - usgo.containers.phpmyadmin
 
 - hosts: lamp_servers
   tasks:
