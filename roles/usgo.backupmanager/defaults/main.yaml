@@ -1,4 +1,5 @@
 bm_repository_root: '/archives'
+bm_repository_prefix: ''
 bm_archive_method: 'tarball-incremental'
 bm_tarball_directories: '/etc'
 bm_tarball_blacklists: '/archives'
