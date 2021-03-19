@@ -13,6 +13,21 @@
     cache_valid_time: 3600
     pkg:
     - backup-manager
+    - gcc
+    - g++
+    - make
+
+- name: Install App::cpanminus
+  command: "cpan install App::cpanminus"
+
+- name: Install CPANM
+  community.general.cpanm:
+    name: "{{ item }}"
+  with_items:
+   - Log::Log4perl
+   - Moose
+   - DateTime
+   - Net::Amazon::S3
 
 - name: Add the config template file
   template:
