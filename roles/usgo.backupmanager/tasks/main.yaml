@@ -30,10 +30,18 @@
    - LWP::Protocol::https
    - Net::Amazon::S3
 
-- name: Add the config template file
+- name: Add the config template file backup-manager.conf
   template:
     src: "backup-manager.conf.j2"
     dest: "/etc/backup-manager.conf"
+    owner: root
+    group: root
+    mode: '0650'
+
+- name: Add the config template file for backup-manager-mysql.conf
+  ansible.builtin.copy:
+    src: "etc/backup-manager-mysql.conf"
+    dest: "/etc/backup-manager-mysql.conf"
     owner: root
     group: root
     mode: '0650'
