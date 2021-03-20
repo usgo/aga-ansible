@@ -1,6 +1,7 @@
 bm_repository_root: '/archives'
 bm_repository_prefix: ''
 bm_archive_method: 'tarball-incremental'
+bm_archive_ttl: '3'
 bm_tarball_directories: '/etc'
 bm_tarball_blacklists: '/archives'
 bm_tarball_slicesize: '1000M'
