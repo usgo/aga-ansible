@@ -21,6 +21,7 @@ WSGIProcessGroup {{ item.servername }}
 WSGIApplicationGroup %{GLOBAL}
 
 SetEnv DJANGO_SETTINGS_MODULE "agagd.settings.prod"
+SetEnv DB_HOST "{{ agagd_db_host }}"
 SetEnv APP_DB_NAME "{{ agagd_db_name }}"
 SetEnv AGAGD_USER "{{ agagd_db_user }}"
 SetEnv TEMPLATE_DIR "${agagd_repo}/agagd/templates"
