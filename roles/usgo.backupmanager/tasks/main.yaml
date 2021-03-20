@@ -45,3 +45,22 @@
     owner: root
     group: root
     mode: '0650'
+
+- name: Add a General Crontab for Backup Manager
+  ansible.builtin.cron:
+    name: "General Crontab for Backup Manager"
+    hour: "0"
+    job: "/usr/sbin/backup-manager"
+
+- name: Add a Crontab for Backup Manager MySQL
+  ansible.builtin.cron:
+    name: "Crontab for Backup Manager MySQL"
+    hour: "2"
+    job: "/usr/sbin/backup-manager -c /etc/backup-manager-mysql.conf"
+
+- name: Add a General Crontab for Backup Manager Uploads
+  ansible.builtin.cron:
+    name: "General Crontab for Backup Manager Uploads"
+    hour: "3"
+    job: "/usr/sbin/backup-manager -u"
+
