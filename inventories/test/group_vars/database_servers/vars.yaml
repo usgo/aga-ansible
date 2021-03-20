@@ -1,4 +1,4 @@
-bm_repository_prefix: 'test'
+bm_repository_prefix: 'USGO_TEST_DB'
 bm_tarball_slicesize: '500M'
 bm_tarballinc_masterdatetype: 'monthly'
 bm_mysql_databases: '{{ vault_bm_mysql_databases }}'

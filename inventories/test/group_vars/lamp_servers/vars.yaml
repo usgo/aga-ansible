@@ -6,6 +6,7 @@ usgo_github_access_token: "{{ vault_github_access_token }}"
 
 # Drupal Database Configuration
 usgo_drupal_base_url: 'https://www.test.usgo.org'
+usgo_drupal_database_host: "{{ vault_drupal_database_host }}"
 usgo_drupal_database_name: "{{ vault_drupal_database_name }}"
 usgo_drupal_database_prefix: "{{ vault_drupal_database_prefix }}"
 usgo_drupal_database_user: "{{ vault_drupal_database_user }}"
@@ -57,6 +58,7 @@ usgo_drupal_modules:
 
 ## AGAGD Environment
 agagd_db_user: agagd_db_ro_usr 
+agagd_db_host: "{{ vault_agagd_db_host }}"
 agagd_db_name: "{{ vault_agagd_db_name }}"
 agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
 agagd_secret_key: "{{ vault_agagd_secret_key }}"
