@@ -27,6 +27,7 @@
    - Log::Log4perl
    - Moose
    - DateTime
+   - LWP::Protocol::https
    - Net::Amazon::S3
 
 - name: Add the config template file
