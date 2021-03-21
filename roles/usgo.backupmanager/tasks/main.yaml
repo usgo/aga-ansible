@@ -23,6 +23,7 @@
 - name: Install CPANM
   community.general.cpanm:
     name: "{{ item }}"
+    notest: yes
   with_items:
    - Log::Log4perl
    - Moose
