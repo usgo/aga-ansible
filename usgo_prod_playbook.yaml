@@ -85,3 +85,7 @@
           - rule: allow
             from_ip: '192.168.192.5'
             to_port: 3306
+    - import_role:
+        name: usgo.backupmanager
+      tags:
+        - usgo.backupmanager
