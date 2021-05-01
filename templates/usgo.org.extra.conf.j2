@@ -58,6 +58,9 @@ SetEnv MM_DB_PASS {{ mm_db_pass }}
       Options +FollowSymLinks -Indexes -MultiViews
       AllowOverride all
       Require all granted
+
+      # Added to allow CORS access for the Membership Manager.
+      Header set Access-Control-Allow-Origin "*"
 </Directory>
 
 <Directory ${usgo_members_root}>
