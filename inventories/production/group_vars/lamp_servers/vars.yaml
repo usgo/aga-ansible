@@ -56,17 +56,6 @@ usgo_drupal_modules:
   - { name: 'workbench_moderation', version: '7.x-3.0', installed: True }
   - { name: 'node_view_permissions', version: '7.x-1.6', installed: True }
 
-## AGAGD Environment
-agagd_db_user: agagd_db_ro_usr 
-agagd_db_name: "{{ vault_agagd_db_name }}"
-agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
-agagd_secret_key: "{{ vault_agagd_secret_key }}"
-agagd_google_analytics_tracking_id: "{{ vault_agagd_google_analytics_tracking_id }}"
-
-# Current Production AGAGD Version
-# - Date: Oct. 27, 2020
-agagd_version: '2021.02.06'
-
 # Current Production Membership Manager Version
 usgo_membership_manager_version: '2021.05.03'
 
