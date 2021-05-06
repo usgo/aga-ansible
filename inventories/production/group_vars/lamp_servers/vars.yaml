@@ -17,7 +17,7 @@ usgo_drupal_salt: "{{ vault_drupal_salt }}"
 usgo_cookie_domain: 'www.usgo.org'
 
 # Drupal Production Version for usgo.org
-usgo_drupal_version: '7.78'
+usgo_drupal_version: '7.80'
 
 # Drupal Production Modules for usgo.org
 usgo_drupal_modules:
@@ -25,7 +25,7 @@ usgo_drupal_modules:
   - { name: 'calendar', version: '7.x-3.6', installed: True }
   - { name: 'captcha', version: '7.x-1.7', installed: True }
   - { name: 'ctools', version: '7.x-1.19', installed: True }
-  - { name: 'date', version: '7.x-2.10', installed: True }
+  - { name: 'date', version: '7.x-2.11', installed: True }
   - { name: 'devel', version: '7.x-1.6', installed: True }
   - { name: 'diff', version: '7.x-3.4', installed: True }
   - { name: 'drafty', version: '7.x-1.0-rc1', installed: True }
@@ -37,7 +37,7 @@ usgo_drupal_modules:
   - { name: 'google_analytics', version: '7.x-2.6', installed: True }
   - { name: 'insert', version: '7.x-1.4', installed: True }
   - { name: 'job_scheduler', version: '7.x-2.0', installed: True }
-  - { name: 'link', version: '7.x-1.7', installed: True }
+  - { name: 'link', version: '7.x-1.9', installed: True }
   - { name: 'markdown', version: '7.x-1.6', installed: True }
   # - { name: 'markdown_abbr', version: '', installed: True }
   - { name: 'media', version: '7.x-2.0-unstable1', installed: True }
@@ -46,9 +46,9 @@ usgo_drupal_modules:
   - { name: 'panels', version: '7.x-3.10', installed: True } # Unused Module
   - { name: 'pathauto', version: '7.x-1.3', installed: True }
   - { name: 'recaptcha', version: '7.x-2.3', installed: True }
-  - { name: 'redirect', version: '7.x-1.0-rc3', installed: True }
+  - { name: 'redirect', version: '7.x-1.0-rc4', installed: True }
   - { name: 'rules', version: '7.x-2.12', installed: True }
-  - { name: 'token', version: '7.x-1.7', installed: True }
+  - { name: 'token', version: '7.x-1.8', installed: True }
   - { name: 'variable', version: '7.x-2.5', installed: True }
   - { name: 'video', version: '7.x-1.0-alpha2', installed: True }
   - { name: 'views', version: '7.x-3.24', installed: True }
@@ -56,19 +56,8 @@ usgo_drupal_modules:
   - { name: 'workbench_moderation', version: '7.x-3.0', installed: True }
   - { name: 'node_view_permissions', version: '7.x-1.6', installed: True }
 
-## AGAGD Environment
-agagd_db_user: agagd_db_ro_usr 
-agagd_db_name: "{{ vault_agagd_db_name }}"
-agagd_db_user_password: "{{ vault_agagd_db_user_password }}"
-agagd_secret_key: "{{ vault_agagd_secret_key }}"
-agagd_google_analytics_tracking_id: "{{ vault_agagd_google_analytics_tracking_id }}"
-
-# Current Production AGAGD Version
-# - Date: Oct. 27, 2020
-agagd_version: '2021.02.06'
-
 # Current Production Membership Manager Version
-usgo_membership_manager_version: '2021.02.06'
+usgo_membership_manager_version: '2021.05.03'
 
 ## Membership Manager Environment
 mm_admin_debug_mode: 'false'
