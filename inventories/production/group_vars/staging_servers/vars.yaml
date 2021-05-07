@@ -1,0 +1,16 @@
+---
+usgo_nginx_certbot_email: webmaster+staging@usgo.org
+
+## Google Analytics Configuration for the AGAGD
+usgo_agagd_google_analytics_id: "{{ vault_agagd_frontend_google_analytics_id }}"
+
+## Container Configuration for the AGAGD
+usgo_agagd_min_containers: 5
+usgo_container_agagd_version: '2021.05.07-beta'
+usgo_container_agagd_allowed_hosts: 'beta.agagd.usgo.org'
+usgo_container_agagd_db_host: "{{ vault_agagd_backend_db_host }}"
+usgo_container_agagd_db_port: '3306'
+usgo_container_agagd_db_name: "{{ vault_agagd_db_name }}"
+usgo_container_agagd_db_user: agagd_ro_frontend_usr
+usgo_container_agagd_db_password: "{{ vault_agagd_frontend_db_user_password }}"
+usgo_container_agagd_secret_key: "{{ vault_agagd_frontend_secret_key }}"
