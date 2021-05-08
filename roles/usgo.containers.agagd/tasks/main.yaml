@@ -2,6 +2,7 @@
 - name: Create the an AGAGD Application in Docker
   community.general.docker_container:
     name: "{{ usgo_container_agagd_container_name }}-{{ item }}"
+    hostname: "{{ usgo_container_agagd_container_name }}-{{ item }}"
     state: started
     pull: yes
     recreate: yes
