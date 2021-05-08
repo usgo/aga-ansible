@@ -10,9 +10,49 @@
       - 443:443
     volumes:
       - certs:/etc/nginx/certs
-      - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
+  when: 
+    - not nginx_proxy_container_hosts_provided
+
+- name: Create the nginx vhost directory on host
+  file:
+    path: /etc/nginx/vhost.d
+    owner: root
+    group: root
+    mode: '0644'
+    recurse: yes
+  when: 
+    - nginx_proxy_container_hosts_provided
+
+- name: Add templates for nginx vhosts to host
+  template:
+    src: "containers-{{ item.hostname }}.j2"
+    dest: "/etc/nginx/vhost.d/{{ item.hostname }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items: "{{ nginx_proxy_container_hosts }}"
+  when:
+    - nginx_proxy_container_hosts_provided
+
+- name: Create the nginx-proxy docker container with vhost.d
+  community.general.docker_container:
+    name: nginx-proxy
+    state: started
+    restart_policy: always
+    image: jwilder/nginx-proxy:latest
+    network_mode: default
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /etc/nginx/vhost.d:/etc/nginx/vhost.d:rw
+  when: 
+    - nginx_proxy_container_hosts_provided
 
 - name: Create the nginx-proxy docker container
   community.general.docker_container:

@@ -27,6 +27,23 @@
         - usgo.containers
         - usgo.containers.phpmyadmin
 
+- hosts: staging_servers
+  tasks:
+    - import_role:
+        name: usgo.containers
+      tags:
+        - usgo.containers
+    - import_role:
+        name: usgo.containers.nginx
+      tags:
+        - usgo.containers
+        - usgo.containers.agagd
+    - import_role:
+        name: usgo.containers.agagd
+      tags:
+        - usgo.containers
+        - usgo.containers.agagd
+
 - hosts: lamp_servers
   tasks:
     - name: "Updating cache the test lamp servers if not updated in last hour"
@@ -85,6 +102,11 @@
           - rule: allow
             from_ip: '192.168.192.5'
             to_port: 3306
+          - rule: allow
+            from_ip: '192.168.196.56'
+            to_port: 3306
+      tags:
+        - usgo.ufw.databases
     - import_role:
         name: usgo.backupmanager
       tags:

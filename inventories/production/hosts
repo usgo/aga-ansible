@@ -4,5 +4,8 @@
 [frontend_servers]
 usgo_frontend ansible_host=45.33.52.184
 
+[staging_servers]
+usgo_staging_1 ansible_host=66.175.220.148
+
 [database_servers]
 usgo_main_db ansible_host=45.79.74.24
