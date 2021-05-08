@@ -28,10 +28,6 @@
         name: usgo.membership_manager
       tags:
         - usgo.membership
-    - import_role:
-        name: usgo.agagd
-      tags:
-        - usgo.agagd 
     - include_role:
         name: cron.update.wordpress
 
