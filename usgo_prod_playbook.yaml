@@ -30,6 +30,14 @@
 - hosts: staging_servers
   tasks:
     - import_role:
+        name: weareinteractive.ufw
+      vars:
+        ufw_rules:
+          - rule: allow
+            name: OpenSSH
+      tags:
+        - usgo.ufw.staging_servers
+    - import_role:
         name: usgo.containers
       tags:
         - usgo.containers
