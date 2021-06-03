@@ -1,14 +1,24 @@
 ---
-- hosts: prod_app_servers
+- hosts: lamp_servers
   become: yes
   tasks:
-    - include_role: 
+    - import_role: 
         name: web
-    - include_role: 
+      tags:
+        - usgo.web
+    - import_role: 
         name: mysql
-    - include_role:
+      tags:
+        - usgo.mysql
+    - import_role:
         name: waytogo
-    - include_role:
+      tags:
+        - usgo.waytogo
+    - import_role:
         name: aghs
-    - include_role:
+      tags:
+        - usgo.aghs
+    - import_role:
         name: collective_access
+      tags:
+        - usgo.collective_access
