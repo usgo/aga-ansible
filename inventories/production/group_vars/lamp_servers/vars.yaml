@@ -17,7 +17,7 @@ usgo_drupal_salt: "{{ vault_drupal_salt }}"
 usgo_cookie_domain: 'www.usgo.org'
 
 # Drupal Production Version for usgo.org
-usgo_drupal_version: '7.80'
+usgo_drupal_version: '7.81'
 
 # Drupal Production Modules for usgo.org
 usgo_drupal_modules:
