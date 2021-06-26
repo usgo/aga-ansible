@@ -10,16 +10,17 @@ location ~ ^/beta/tournaments/(.*)/$ {
     return 302 $scheme://{{ item.beta_agagd_hostname }}/tournaments/$1/;
 }
 
-location = /beta/players/ {
-    return 302 $scheme://{{ item.beta_agagd_hostname }}/players/;
+location ~ ^/beta/players/(.*)/$ {
+    return 302 $scheme://{{ item.beta_agagd_hostname }}/players/$1/;
 }
 
-location ~ ^(/player/\d+|/player/\d+/)$ {
-    return 302 $scheme://agagd.usgo.org$request_uri;
-}
 
 location ~ ^/(search|qualifications|information)/$ {
     return 302 $scheme://agagd.usgo.org$request_uri;
+}
+
+location ~ ^/ratings/(.*)/$ {
+    proxy_pass http://{{ item.beta_agagd_hostname }}-upstream/ratings/$1/$is_args$args;
 }
 
 location ~ ^/(.*)$ {
