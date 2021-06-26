@@ -2,7 +2,7 @@
 usgo_nginx_certbot_email: ''
 usgo_nginx_frontend_network_name: ''
 usgo_nginx_frontend_apps: []
-nginx_proxy_container_hosts_provided: true
+nginx_proxy_container_hosts_provided: false
 nginx_proxy_container_hosts: []
 usgo_docker_compose_nginx_directory: '/etc/docker-nginx-proxy'
 usgo_docker_compose_apps_directory: '/etc/docker-nginx-apps'
