@@ -10,6 +10,10 @@ location ~ ^/beta/tournaments/(.*)/$ {
     return 302 $scheme://{{ item.beta_agagd_hostname }}/tournaments/$1/;
 }
 
+location ~ ^/beta/players/$ {
+    return 302 $scheme://{{ item.beta_agagd_hostname }}/players/;
+}
+
 location ~ ^/beta/players/(.*)/$ {
     return 302 $scheme://{{ item.beta_agagd_hostname }}/players/$1/;
 }
