@@ -8,6 +8,15 @@
       tags:
         - usgo.containers
     - import_role:
+        name: usgo.containers.awslogs
+      tags:
+        - usgo.awslogs
+      vars:
+        aws_access_key_id: "{{ vault_aws_access_key_id }}"
+        aws_secret_access_key: "{{ vault_aws_secret_access_key }}" 
+        awslogs_group: "{{ vault_frontend_awslogs_group }}"
+        awslogs_stream: "{{ vault_frontend_awslogs_stream }}"
+    - import_role:
         name: usgo.containers
       tags:
         - usgo.containers
@@ -16,6 +25,8 @@
       tags:
         - usgo.containers
         - usgo.containers.agagd
+      vars:
+        nginx_proxy_container_hosts_provided: False
     - import_role:
         name: usgo.containers.agagd
       tags:
@@ -37,6 +48,15 @@
             name: OpenSSH
       tags:
         - usgo.ufw.staging_servers
+    - import_role:
+        name: usgo.containers.awslogs
+      tags:
+        - usgo.awslogs
+      vars:
+        aws_access_key_id: "{{ vault_aws_access_key_id }}"
+        aws_secret_access_key: "{{ vault_aws_secret_access_key }}" 
+        awslogs_group: "{{ vault_staging_awslogs_group }}"
+        awslogs_stream: "{{ vault_staging_awslogs_stream }}"
     - import_role:
         name: usgo.containers
       tags:
@@ -113,6 +133,9 @@
           - rule: allow
             from_ip: '192.168.196.56'
             to_port: 3306
+          - rule: allow
+            from_ip: '192.168.178.43'
+            to_port: 3306 
       tags:
         - usgo.ufw.databases
     - import_role:
