@@ -1,0 +1,7 @@
+---
+aws_access_key_id: ''
+aws_secret_access_key: ''
+awslogs_group: '' 
+awslogs_stream: ''
+aws_root_credentials: False
+docker_systemd_directory: /etc/systemd/system/docker.service.d
