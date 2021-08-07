@@ -7,6 +7,7 @@
     pull: yes
     recreate: yes
     restart_policy: always
+    cpus: 0.25
     image: "usgo/agagd:{{ usgo_container_agagd_version }}"
     exposed_ports: "{{ usgo_container_agagd_virtual_port }}"
     env:
