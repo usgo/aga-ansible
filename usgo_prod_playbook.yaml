@@ -66,6 +66,7 @@
       tags:
         - usgo.containers
         - usgo.containers.agagd
+        - usgo.containers.nginx
     - import_role:
         name: usgo.containers.agagd
       tags:

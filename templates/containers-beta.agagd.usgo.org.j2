@@ -1,33 +1,44 @@
-location = /beta/ {
-    return 302 $scheme://{{ item.beta_agagd_hostname }}/;
+# Special Case for search
+location ~ ^/beta/search/$ {
+    return 302 $scheme://{{ item.beta_agagd_hostname }}/b/search/$is_args$args;
 }
 
-location = /beta/tournaments/ {
-    return 302 $scheme://{{ item.beta_agagd_hostname }}/tournaments/;
+location ~ ^/beta/(\w+)/$ {
+    return 302 $scheme://{{ item.beta_agagd_hostname }}/$1/;
 }
 
-location ~ ^/beta/tournaments/(.*)/$ {
-    return 302 $scheme://{{ item.beta_agagd_hostname }}/tournaments/$1/;
+location ~ ^/beta/(\w+)/(\d+)/$ {
+    return 302 $scheme://{{ item.beta_agagd_hostname }}/$1/$2/;
 }
 
-location ~ ^/beta/players/$ {
-    return 302 $scheme://{{ item.beta_agagd_hostname }}/players/;
+location ~ ^/player/(\d+)/$ {
+    return 302 $scheme://{{ item.beta_agagd_hostname }}/players/$1/$is_args$args;
 }
 
-location ~ ^/beta/players/(.*)/$ {
-    return 302 $scheme://{{ item.beta_agagd_hostname }}/players/$1/;
+location = /search/ {
+    return 302 $scheme://{{ item.beta_agagd_hostname }}/o/search/$is_args$args;
 }
 
-
-location ~ ^/(search|qualifications|information)/$ {
-    return 302 $scheme://agagd.usgo.org$request_uri;
+location = / {
+   proxy_pass http://{{ item.beta_agagd_hostname }}-upstream/beta/$is_args$args;
 }
 
-location ~ ^/ratings/(.*)/$ {
+location ~ ^/b/search/$ {
+   proxy_pass http://{{ item.beta_agagd_hostname }}-upstream/beta/search/$is_args$args;
+}
+
+location ~ ^/o/search/$ {
+   proxy_pass http://{{ item.beta_agagd_hostname }}-upstream/search/$is_args$args;
+}
+
+location ~ ^/(\w+)/$ {
+   proxy_pass http://{{ item.beta_agagd_hostname }}-upstream/beta/$1/$is_args$args;
+}
+
+location ~ ^/players/(\d+) {
+   proxy_pass http://{{ item.beta_agagd_hostname }}-upstream/beta/players/$1/$is_args$args;
+}
+
+location ~ ^/ratings/(\d+)/$ {
     proxy_pass http://{{ item.beta_agagd_hostname }}-upstream/ratings/$1/$is_args$args;
 }
-
-location ~ ^/(.*)$ {
-    proxy_pass http://{{ item.beta_agagd_hostname }}-upstream/beta/$1$is_args$args;
-}
-
