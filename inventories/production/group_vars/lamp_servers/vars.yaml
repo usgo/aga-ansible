@@ -86,6 +86,20 @@ wordpress_database_user: "{{ vault_wordpress_database_user }}"
 wordpress_database_pass: "{{ vault_wordpress_database_pass }}"
 wordpress_table_prefix: "{{ vault_wordpress_table_prefix }}"
 
+# Wordpress Plugins and Themes
+wordpress_plugins:
+  - name: add-to-any
+  - name: advanced-excerpt
+  - name: akismet
+  - name: amazon-polly
+  - name: broken-link-checker
+  - name: gallery-plugin
+  - name: glift-go-game
+  - name: maintenance-mode
+  - name: photo-gallery
+  - name: social-networks-auto-poster-facebook-twitter-g
+  - name: nextgen-gallery
+
 vhost:
   - servername: usgo.org
     serveralias: www.usgo.org
