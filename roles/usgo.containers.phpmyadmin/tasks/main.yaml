@@ -6,6 +6,7 @@
     pull: yes
     recreate: yes
     restart_policy: always
+    cpus: 0.45
     image: "phpmyadmin/phpmyadmin:{{ usgo_container_phpmyadmin_version }}"
     exposed_ports: "{{ usgo_container_phpmyadmin_virtual_port }}"
     env:
