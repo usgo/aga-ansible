@@ -5,7 +5,7 @@ usgo_nginx_certbot_email: webmaster@usgo.org
 usgo_agagd_google_analytics_id: "{{ vault_agagd_frontend_google_analytics_id }}"
 
 ## Container Configuration for the AGAGD
-usgo_agagd_min_containers: 1
+usgo_agagd_min_containers: 4
 usgo_container_agagd_version: '2021.10.2'
 usgo_container_agagd_allowed_hosts: 'agagd.usgo.org'
 usgo_container_agagd_db_host: "{{ vault_agagd_backend_db_host }}"
