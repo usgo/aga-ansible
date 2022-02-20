@@ -9,6 +9,13 @@
     restart_policy: always
     image: "{{ usgo_container_agagd_repository }}/usgo/agagd:{{ usgo_container_agagd_version }}"
     exposed_ports: "{{ usgo_container_agagd_virtual_port }}"
+    log_driver: awslogs
+    log_options:
+      awslogs-region: "us-east-1"
+      awslogs-group: "AGAGD_Prod"
+      awslogs-create-group: "true"
+      max-buffer-size: "1m"
+      mode: "non-blocking"
     env:
       ALLOWED_HOSTS: "{{ usgo_container_agagd_allowed_hosts }}"
       VIRTUAL_HOST: "{{ usgo_container_agagd_virtual_host }}"
